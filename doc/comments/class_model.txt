@@ -16,6 +16,8 @@
     Proposal: 
 
     Website's bootstrap module.
+    Basically it prepares the page to work with URL routes and serves as container 
+    to subpages.
 
 + - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - +
 
@@ -25,7 +27,6 @@
 // ==========================================================================================
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './Main.css';
 
 // == CLASS
@@ -37,8 +38,51 @@ class Main extends React.Component
     // == CONSTRUCTOR
     // ======================================================================================
 
+    /**
+     * 
+     *  Component constructor;
+     * 
+     *  @param props Initial Properties
+     * 
+     */
+    constructor(props)
+    {
+        super(props);
+
+        // == STATE
+
+        this.state = 
+        {
+            loading = false
+        }
+    }
+
     // == METHODS
     // ======================================================================================
+
+    /**
+     * 
+     *  Called when component has been rendered and mounted for the first time.
+     * 
+     *  @returns void;
+     * 
+     */
+    componentDidMount()
+    {
+
+    }
+
+    /**
+     * 
+     *  Called when component is being to be unmounted and removed from component tree.
+     * 
+     *  @returns void;
+     * 
+     */    
+    componentWillMount()
+    {
+        
+    }
 
     /**
      * 
@@ -50,7 +94,7 @@ class Main extends React.Component
     render()
     {
         return (
-        <div>xDS</div>
+                <div>HELLO WORLD</div>
         )
     }
 
