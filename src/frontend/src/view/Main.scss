@@ -1,0 +1,16 @@
+@import "./Theme.scss";
+
+html
+{
+    height:100%;
+}
+
+body
+{
+    height:100%;
+
+    @include themify
+    {
+        background-color: themed("color-primary");
+    }
+}

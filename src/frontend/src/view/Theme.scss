@@ -1,0 +1,15 @@
+$default:
+(
+    color-primary: #e1da23,
+    color-secondary: #ff003c,
+    color-ternary: #02d8f3,
+    color-minimum: #000000,
+    color-maximum: #FFFFFF,
+);
+
+$themes:
+(
+    default: $default,
+);
+
+@import "../theme-mixins.scss";

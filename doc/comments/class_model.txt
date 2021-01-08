@@ -13,12 +13,6 @@
     File: Main.js
     Date: 2021/01/07
 
-    Proposal: 
-
-    Website's bootstrap module.
-    Basically it prepares the page to work with URL routes and serves as container 
-    to subpages.
-
 + - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - +
 
 */
@@ -29,11 +23,26 @@
 import React from 'react';
 import './Main.css';
 
+// == CONSTANTS
+// ==========================================================================================
+
 // == CLASS
 // ==========================================================================================
 
+/**
+ * 
+ *  Website's bootstrap module.
+ *  Basically it prepares the page to work with URL routes and serves as container 
+ *  to subpages.
+ * 
+ *  @author Henrique Fantini
+ *  @since 0.0.1
+ * 
+ */
 class Main extends React.Component 
 {
+    // == DECLARATIONS
+    // ======================================================================================
 
     // == CONSTRUCTOR
     // ======================================================================================
@@ -49,16 +58,30 @@ class Main extends React.Component
     {
         super(props);
 
+		// == VAR & CONST
+
         // == STATE
 
-        this.state = 
+        this.state =
         {
-            loading = false
+
         }
     }
 
     // == METHODS
     // ======================================================================================
+
+    /**
+     * 
+     *  Called when component receive props from parent
+     * 
+     *  @returns void;
+     * 
+     */   
+    static getDerivedStateFromProps(props, state)
+    {
+        return( {isVisible: props.isVisible} );
+    }
 
     /**
      * 
@@ -79,7 +102,7 @@ class Main extends React.Component
      *  @returns void;
      * 
      */    
-    componentWillMount()
+    componentWillUnmount()
     {
         
     }
@@ -93,9 +116,7 @@ class Main extends React.Component
      */
     render()
     {
-        return (
-                <div>HELLO WORLD</div>
-        )
+	
     }
 
     // == EVENTS

@@ -1,0 +1,149 @@
+@import "../Theme.scss";
+@import "../../mobile-mixins.scss";
+
+.FSLOADER_ROOT
+{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 100%;
+
+    @include themify
+    {
+        background-color: themed("color-primary");
+    }
+}
+
+.FSLOADER_INTERNAL
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes FSLOADER_BACKGROUND_LOADING_ANIM_KEYFRAMES
+{
+    0% { top: -35%; background-position-y: 0%; }
+    50% { top: 100%; background-position-y: 100% }
+    51% { top: 100%; background-position-y: 100% }
+    100% { top: -35%; background-position-y: 0% }
+}
+
+.FSLOADER_BACKGROUND_LOADING_ANIM
+{
+    opacity: 0;
+    animation-duration: 3000ms;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-name:FSLOADER_BACKGROUND_LOADING_ANIM_KEYFRAMES;
+}
+
+.FSLOADER_BACKGROUND
+{
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    height: 35%;
+    z-index: -10;
+    background-image: url("../../assets/image/svg/circuit.svg");
+    background-repeat: no-repeat;
+    opacity: 0.05;
+
+    @include responsive("XS")
+    {
+        background-size: 400% 400%;
+        background-position-x: center;
+    }
+
+    @include responsive("XL")
+    {
+        background-size: cover;
+    }
+}
+
+.FSLOADER_BACKGROUND_HIDDEN
+{
+    display: none;
+}
+
+.FSLOADER_CONTAINER
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.FSLOADER_CONTAINER_SUB
+{
+    height: auto;
+    
+    @include responsive("XS")
+    {
+        width: 70%;
+    }
+
+    @include responsive("MD")
+    {
+        width: 50%;
+    }
+
+    @include responsive("XL")
+    {
+        width: 20%;
+    }
+}
+
+.FSLOADER_LOGO
+{
+    width: 100%;
+    height: auto;
+}
+
+.FSLOADER_LOADER_CONTAINER
+{
+    margin-top: 80%;
+    text-align: center;
+}
+
+.FSLOADER_LOADER_IMAGE
+{
+    width: 100%;
+    height: auto;
+}
+
+@keyframes FSLOADER_ANIM_FADE_DESKTOP_KEYFRAMES
+{
+    from { top: 0%; bottom: auto; }
+    to { top: 100%; bottom: auto; }
+}
+
+.FSLOADER_ANIM_FADE_DESKTOP
+{
+    animation-delay: 250ms;
+    animation-duration: 250ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+    animation-name:FSLOADER_ANIM_FADE_DESKTOP_KEYFRAMES;
+}
+
+@keyframes FSLOADER_ANIM_FADE_MOBILE_KEYFRAMES
+{
+    0% { top: 0px; left: 0px; right: 0px; opacity: 1; }
+    15% { top: 15px; left: 15px; right: 15px; opacity: 0.85 }
+    45% { top: 15px; left: 15px; right: 15px; opacity: 0.65 }
+    100% { top: 250px; left: 15px; right: 15px; opacity: 0 }
+}
+
+.FSLOADER_ANIM_FADE_MOBILE
+{
+    animation-duration: 750ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    animation-name: FSLOADER_ANIM_FADE_MOBILE_KEYFRAMES;
+}

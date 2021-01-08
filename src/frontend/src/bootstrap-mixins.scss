@@ -1,0 +1,40 @@
+/**
+*
+*   Define Mixins SASS relacionados ao uso do Bootstrap.
+*
+*   @author Henrique Fantini
+*
+*/
+
+// == DECLARAÇÕES
+// ==================================================================================================
+
+$breakpoints: 
+(
+    "XS": 0px,
+    "SM": 768px,
+    "MD": 992px,
+    "LG": 1200px,
+);
+
+// == MIXINS
+// ==================================================================================================
+
+@mixin bootstrap($width, $type: min) 
+{
+    @if map_has_key($breakpoints, $width) 
+    {
+        $width: map_get($breakpoints, $width);
+        @if $type == max 
+        {
+            $width: $width - 1px;
+        }
+        @media only screen and (#{$type}-width: $width) 
+        {
+            @content;
+        }
+    }
+}
+
+// == REGRAS
+// ==================================================================================================
