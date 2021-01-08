@@ -10,7 +10,7 @@
    
 - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    File: Main.js
+    File: MenuButton.js
     Date: 2021/01/07
 
 + - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - +
@@ -20,7 +20,7 @@
 // == IMPORTS
 // ==========================================================================================
 
-import './Main.scss';
+import './MenuButton.scss';
 
 import React from 'react';
 
@@ -32,18 +32,18 @@ import React from 'react';
 
 /**
  * 
- *  Website's bootstrap module.
- *  Basically it prepares the page to work with URL routes and serves as container 
- *  to subpages.
+ *  Defines the menu button (Container inside MenuBar).
  * 
  *  @author Henrique Fantini
  *  @since 0.0.1
  * 
  */
-class Main extends React.Component 
+class MenuButton extends React.Component 
 {
     // == DECLARATIONS
     // ======================================================================================
+
+    #_icon = null;
 
     // == CONSTRUCTOR
     // ======================================================================================
@@ -58,6 +58,8 @@ class Main extends React.Component
     constructor(props)
     {
         super(props);
+
+        this._icon = props.icon; 
 
 		// == VAR & CONST
 
@@ -117,7 +119,20 @@ class Main extends React.Component
      */
     render()
     {
-	
+        return (
+        
+            <div id="MENU_BUTTON_ROOT" className="MENU_BUTTON_ROOT">
+
+                <div id="MENU_BUTTON_LEFT" className="MENU_BUTTON_LEFT"> 
+                    <this._icon className="MENU_BUTTON_IMAGE" fill={this.props.color}/>
+                </div>
+
+                <div id="MENU_BUTTON_RIGHT" className="MENU_BUTTON_RIGHT" style={ {color: this.props.color} }>
+                    {this.props.text}
+                </div>
+
+            </div>
+        )
     }
 
     // == EVENTS
@@ -130,4 +145,4 @@ class Main extends React.Component
 // == EXPORTS
 // ==========================================================================================
 
-export default Main;
+export default MenuButton;

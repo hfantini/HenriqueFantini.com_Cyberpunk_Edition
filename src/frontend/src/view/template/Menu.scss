@@ -1,0 +1,133 @@
+@import "../Theme.scss";
+@import "../../mobile-mixins.scss";
+
+.MENU_ROOT
+{
+    @include themify
+    {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-color: themed("color-dark");
+
+        .MENU_BACKGROUND
+        {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            height: calc(100% - 5px);
+            background-color: themed("color-primary");
+
+            .MENU_IMAGE
+            {
+                width: 100%;
+                height: 100%;
+                background-repeat: no-repeat;
+                background-image: url("../../assets/image/svg/circuit.svg");
+                background-size: cover;
+                background-position: 0 0;
+                opacity: 0.5;
+            }
+        }
+
+        .MENU_CONTENT
+        {
+            display: flex;
+            width: 100%;
+            height: calc(100% - 5px);
+            
+            .MENU_LEFT
+            {
+                width: 20%;
+                height: 100%;
+                background-color: themed("color-dark");
+                -webkit-transform: skew(-50deg);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-left: 10%;
+
+                .MENU_IMAGE
+                {
+                    -webkit-transform: skew(50deg);
+                    margin-left: 10px;
+                    width: auto;
+                    height: 100%;
+                }
+            }
+
+            .MENU_RIGHT
+            {
+                width: 80%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                margin-right: 10%;
+
+                .MENU_RIGHT_CONTAINER
+                {
+                    width: auto;
+                    height: 100%;
+                    display: flex;
+                    background-color: black;
+                    -webkit-transform: skew(-50deg);
+
+                    .MENU_BUTTON
+                    {
+                        width: 110px;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+                        transition: width 250ms;
+
+                        .MENU_BUTTON_CONTENT
+                        {
+                            width: 100%;
+                            height: 100%;
+                            -webkit-transform: skew(50deg);
+                        }
+                    }
+
+                    .MENU_BUTTON:hover
+                    {
+                        width: 300px;
+                    }
+
+                    .MENU_BUTTON_HOVER
+                    {
+                        width: 300px;
+                    }
+
+                    .MENU_BUTTON_EXPANDED
+                    {
+                        
+                    }
+
+                    .MENU_BUTTON_ONE
+                    {
+                        background-color: themed("color-secondary");
+                    }
+
+                    .MENU_BUTTON_TWO
+                    {
+                        background-color: themed("color-ternary");
+                    }
+
+                    .MENU_BUTTON_THREE
+                    {
+                        background-color: themed("color-quaternary");
+                    }
+
+                    .MENU_BUTTON_LAST
+                    {
+                        background-color: themed("color-dark");
+                    }
+                }
+            }
+        }
+    }
+}

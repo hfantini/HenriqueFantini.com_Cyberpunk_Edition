@@ -1,0 +1,59 @@
+@import "../Theme.scss";
+@import "../../mobile-mixins.scss";
+
+.TEMPLATE_ROOT
+{
+    @include themify
+    {
+        .TEMPLATE_TOP
+        {
+            height: 90px;
+        }
+
+        .TEMPLATE_CONTENT
+        {
+
+        }
+
+        .TEMPLATE_BOTTOM
+        {
+
+        }
+        
+        @include responsive("XS")
+        {
+            .TEMPLATE_TOP
+            {
+                
+            }
+        
+            .TEMPLATE_CONTENT
+            {
+        
+            }
+        
+            .TEMPLATE_BOTTOM
+            {
+        
+            }
+        }
+
+        @include responsive("XL")
+        {
+            .TEMPLATE_TOP
+            {
+                
+            }
+        
+            .TEMPLATE_CONTENT
+            {
+        
+            }
+        
+            .TEMPLATE_BOTTOM
+            {
+        
+            }
+        }
+    }
+}

@@ -10,8 +10,8 @@
    
 - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    File: Main.js
-    Date: 2021/01/07
+    File: Template.js
+    Date: 2021/01/08
 
 + - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - +
 
@@ -19,8 +19,8 @@
 
 // == IMPORTS
 // ==========================================================================================
-
-import './Main.scss';
+import './Template.scss';
+import Menu from "./Menu";
 
 import React from 'react';
 
@@ -32,15 +32,14 @@ import React from 'react';
 
 /**
  * 
- *  Website's bootstrap module.
- *  Basically it prepares the page to work with URL routes and serves as container 
- *  to subpages.
+ *  Website's main template page.
+ *  Handles with a responsive 
  * 
  *  @author Henrique Fantini
  *  @since 0.0.1
  * 
  */
-class Main extends React.Component 
+class Template extends React.Component 
 {
     // == DECLARATIONS
     // ======================================================================================
@@ -117,7 +116,26 @@ class Main extends React.Component
      */
     render()
     {
-	
+        return( 
+
+            <div className="TEMPLATE_ROOT">
+
+                <div className="TEMPLATE_TOP">
+
+                    <Menu/>
+
+                </div>
+
+                <div className="TEMPLATE_CONTENT">
+
+                </div>
+
+                <div className="TEMPLATE_BOTTOM">
+
+                </div>
+
+            </div> 
+        )
     }
 
     // == EVENTS
@@ -130,4 +148,4 @@ class Main extends React.Component
 // == EXPORTS
 // ==========================================================================================
 
-export default Main;
+export default Template;

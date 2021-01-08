@@ -21,7 +21,7 @@
 // ==========================================================================================
 
 import './FSLoader.scss';
-import ImageLogo from "../../assets/image/png/logo.png";
+import ImageLogo from "../../assets/image/png/logo_loader.png";
 
 import {isMobile} from 'react-device-detect';
 import React from 'react';
@@ -181,16 +181,7 @@ class FSLoader extends React.Component
 
     onRootAnimationEnds()
     {
-        console.log("ACABOU!");
-
-        if(this.state.current === COMPONENT_STATE.LOADING)
-        {
-            this.setState( { current: COMPONENT_STATE.TRANSITION_CLOSE } );
-        }
-        else if(this.state.current === COMPONENT_STATE.TRANSITION_BACKGROUND)
-        {
-            this.setState( { current: COMPONENT_STATE.COMPLETE } );
-        }
+        this.setState( { current: COMPONENT_STATE.COMPLETE } );
     }
 
     onBackgroundAnimationInteration()

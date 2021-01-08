@@ -1,0 +1,36 @@
+.MENU_BUTTON_ROOT
+{
+    height: 100%;
+    display: flex;
+    margin-left: 28px;
+    margin-right: 35px;
+    overflow: hidden;
+
+    .MENU_BUTTON_LEFT
+    {
+        width: 60px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        .MENU_BUTTON_IMAGE
+        {
+            height: 50%;
+            width: auto;
+        }
+    }
+
+    .MENU_BUTTON_RIGHT
+    {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 20px;
+        margin-right: 35px;
+        width: 300px;
+        height: 100%;
+        font-size: 38px;
+    }
+
+}
