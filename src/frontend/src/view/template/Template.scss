@@ -3,19 +3,21 @@
 
 .TEMPLATE_ROOT
 {
+    height: 100%;
+
     @include themify
     {
         .TEMPLATE_TOP
         {
-            height: 90px;
+            
         }
 
         .TEMPLATE_CONTENT
         {
-
+           
         }
 
-        .TEMPLATE_BOTTOM
+        .TEMPLATE_FOOTER
         {
 
         }
@@ -32,7 +34,7 @@
         
             }
         
-            .TEMPLATE_BOTTOM
+            .TEMPLATE_FOOTER
             {
         
             }
@@ -42,17 +44,18 @@
         {
             .TEMPLATE_TOP
             {
-                
+                height: 90px;
             }
         
             .TEMPLATE_CONTENT
             {
-        
+                height: calc( 100% - 90px - 200px );
             }
         
-            .TEMPLATE_BOTTOM
+            .TEMPLATE_FOOTER
             {
-        
+                height: 200px;
+                background-color: themed("color-dark");
             }
         }
     }

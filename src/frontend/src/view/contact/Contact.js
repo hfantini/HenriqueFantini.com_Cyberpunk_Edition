@@ -10,8 +10,8 @@
    
 - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    File: Main.js
-    Date: 2021/01/07
+    File: Contact.js
+    Date: 2021/01/11
 
 + - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - +
 
@@ -20,32 +20,24 @@
 // == IMPORTS
 // ==========================================================================================
 
+import './contact.scss';
 import React from 'react';
-import { HashRouter as Router, Switch, Route, Redirect, useParams } from "react-router-dom";
-
-import './Main.scss';
-import FSLoader from './loader/FSLoader'
-import Template from './template/Template'
 
 // == CONSTANTS
 // ==========================================================================================
-
-const DEBUG_TIME_TO_LOAD = 1000;
 
 // == CLASS
 // ==========================================================================================
 
 /**
  * 
- *  Website's bootstrap module.
- *  Basically it prepares the page to work with URL routes and serves as container 
- *  to subpages.
+ *  Contact component.
  * 
  *  @author Henrique Fantini
  *  @since 0.0.1
  * 
  */
-class Main extends React.Component 
+class Contact extends React.Component 
 {
     // == DECLARATIONS
     // ======================================================================================
@@ -64,18 +56,30 @@ class Main extends React.Component
     {
         super(props);
 
-        // == VAR
+		// == VAR & CONST
 
         // == STATE
 
         this.state =
         {
-            loading: true
+
         }
     }
 
     // == METHODS
     // ======================================================================================
+
+    /**
+     * 
+     *  Called when component receive props from parent
+     * 
+     *  @returns void;
+     * 
+     */   
+    static getDerivedStateFromProps(props, state)
+    {
+        return( {isVisible: props.isVisible} );
+    }
 
     /**
      * 
@@ -86,20 +90,7 @@ class Main extends React.Component
      */
     componentDidMount()
     {
-        var self = this;
 
-        if(process.env.NODE_ENV === 'development')
-        {
-            setTimeout(() => {
-                
-                self.setState( {loading: false} );
-
-            }, DEBUG_TIME_TO_LOAD);
-        }
-        else
-        {
-
-        }
     }
 
     /**
@@ -123,27 +114,7 @@ class Main extends React.Component
      */
     render()
     {
-        return(
-
-            <div id="WS_ROOT" className="WS_ROOT">
-
-                <Router>
-                    
-                    <Switch>
-
-                        <Route exact path="/">
-                            <Redirect to="/en/home" />
-                        </Route>
-
-                    </Switch>
-
-                    <FSLoader isVisible={this.state.loading} />
-                    <Template/>
-
-                </Router>
-
-            </div>
-        )
+        return(<div> CONTACT </div>)
     }
 
     // == EVENTS
@@ -156,4 +127,4 @@ class Main extends React.Component
 // == EXPORTS
 // ==========================================================================================
 
-export default Main;
+export default Contact;

@@ -39,32 +39,32 @@
             
             .MENU_LEFT
             {
-                width: 20%;
+                width: 300px;
                 height: 100%;
                 background-color: themed("color-dark");
-                -webkit-transform: skew(-50deg);
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 margin-left: 10%;
+                z-index: 10;
 
                 .MENU_IMAGE
                 {
-                    -webkit-transform: skew(50deg);
-                    margin-left: 10px;
+                    //-webkit-transform: skew(50deg);
                     width: auto;
-                    height: 100%;
+                    height: 80%;
                 }
             }
 
             .MENU_RIGHT
             {
-                width: 80%;
+                width: calc(90% - 200px);
                 height: 100%;
                 display: flex;
                 align-items: center;
                 justify-content: flex-end;
                 margin-right: 10%;
+                z-index: 10;
 
                 .MENU_RIGHT_CONTAINER
                 {
@@ -76,7 +76,7 @@
 
                     .MENU_BUTTON
                     {
-                        width: 110px;
+                        width: 130px;
                         height: 100%;
                         display: flex;
                         align-items: center;
@@ -92,20 +92,80 @@
                         }
                     }
 
-                    .MENU_BUTTON:hover
+                    .MENU_BUTTON_HOME
                     {
-                        width: 300px;
+                        @extend .MENU_BUTTON;
                     }
 
-                    .MENU_BUTTON_HOVER
+                    .MENU_BUTTON_HOME_SELECTED
                     {
-                        width: 300px;
+                        width: 280px;
+                    }
+                    
+                    .MENU_BUTTON_HOME:hover
+                    {
+                        @extend .MENU_BUTTON_HOME_SELECTED
                     }
 
-                    .MENU_BUTTON_EXPANDED
+                    .MENU_BUTTON_ABOUT
                     {
-                        
+                        @extend .MENU_BUTTON;
                     }
+
+                    .MENU_BUTTON_ABOUT_SELECTED
+                    {
+                        width: 280px;
+                    }   
+
+                    .MENU_BUTTON_ABOUT:hover
+                    {
+                        @extend .MENU_BUTTON_ABOUT_SELECTED
+                    }   
+
+                    .MENU_BUTTON_CV
+                    {
+                        @extend .MENU_BUTTON;
+                    }
+
+                    .MENU_BUTTON_CV_SELECTED
+                    {
+                        width: 200px;
+                    }   
+
+                    .MENU_BUTTON_CV:hover
+                    {
+                        @extend .MENU_BUTTON_CV_SELECTED;
+                    }   
+
+                    .MENU_BUTTON_PORTFOLIO
+                    {
+                        @extend .MENU_BUTTON;
+                    }
+
+                    .MENU_BUTTON_PORTFOLIO_SELECTED
+                    {
+                        width: 350px;
+                    }   
+
+                    .MENU_BUTTON_PORTFOLIO:hover
+                    {
+                        @extend .MENU_BUTTON_PORTFOLIO_SELECTED
+                    }   
+
+                    .MENU_BUTTON_CONTACT
+                    {
+                        @extend .MENU_BUTTON;
+                    }
+
+                    .MENU_BUTTON_CONTACT_SELECTED
+                    {
+                        width: 305px;
+                    }
+
+                    .MENU_BUTTON_CONTACT:hover
+                    {
+                        @extend .MENU_BUTTON_CONTACT_SELECTED
+                    }                       
 
                     .MENU_BUTTON_ONE
                     {
@@ -120,11 +180,6 @@
                     .MENU_BUTTON_THREE
                     {
                         background-color: themed("color-quaternary");
-                    }
-
-                    .MENU_BUTTON_LAST
-                    {
-                        background-color: themed("color-dark");
                     }
                 }
             }

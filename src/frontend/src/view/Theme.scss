@@ -14,4 +14,10 @@ $themes:
     default: $default,
 );
 
+@font-face 
+{
+    font-family: "DarknessOfTheNight";
+    src: url("../assets/font/ttf/darkness_of_the_night.ttf") format("truetype");
+}
+
 @import "../theme-mixins.scss";
