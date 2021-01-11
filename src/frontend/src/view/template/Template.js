@@ -28,7 +28,7 @@ import About from "../about/About";
 import Curriculum from "../cv/Curriculum";
 import Portfolio from "../portfolio/Portfolio";
 import Contact from "../contact/Contact";
-import { HashRouter as Router, Switch, Route, Redirect, useParams } from "react-router-dom";
+import { HashRouter as Router, Switch, Route, Redirect, withRouter } from "react-router-dom";
 
 import React from 'react';
 
@@ -101,7 +101,6 @@ class Template extends React.Component
     componentDidMount()
     {
         // == ROUTE
-        toString();
     }
 
     /**
@@ -131,7 +130,7 @@ class Template extends React.Component
 
                 <div className="TEMPLATE_TOP">
 
-                    <Menu/>
+                    <Menu currentPathname={this.props.location.pathname} onClick={ (e, page) => { this.onMenuItemClick(e, page) } }/>
 
                 </div>
 
@@ -190,6 +189,11 @@ class Template extends React.Component
     // == EVENTS
     // ======================================================================================
 
+    onMenuItemClick( e, page )
+    {
+        this.props.history.push(`/en/${page}`);
+    }
+
     // == GETTERS AND SETTERS
     // ======================================================================================
 }
@@ -197,4 +201,4 @@ class Template extends React.Component
 // == EXPORTS
 // ==========================================================================================
 
-export default Template;
+export default withRouter(Template);

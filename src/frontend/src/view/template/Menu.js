@@ -28,7 +28,6 @@ import {ReactComponent as IconAbout} from "../../assets/image/svg/person.svg";
 import {ReactComponent as IconCV} from "../../assets/image/svg/cv.svg";
 import {ReactComponent as IconPortfolio} from "../../assets/image/svg/briefcase.svg";
 import {ReactComponent as IconContact} from "../../assets/image/svg/mail.svg";
-
 import {isMobile} from 'react-device-detect';
 import React from 'react';
 
@@ -53,45 +52,6 @@ class Main extends React.Component
     // == DECLARATIONS
     // ======================================================================================
 
-        _menuButtonList = 
-        {
-            "MENU_RIGHT_HOME": 
-            {
-                name: "MENU_RIGHT_HOME",
-                html: null,
-                element: null,
-                width: "100px",
-            },
-            "MENU_RIGHT_ABOUT": 
-            {
-                name: "MENU_RIGHT_ABOUT",
-                html: null,
-                element: null,
-                width: "100px",
-            },
-            "MENU_RIGHT_CV": 
-            {
-                name: "MENU_RIGHT_CV",
-                html: null,
-                element: null,
-                width: "100px",
-            },
-            "MENU_RIGHT_PORTFOLIO": 
-            {
-                name: "MENU_RIGHT_PORTFOLIO",
-                html: null,
-                element: null,
-                width: "100px",
-            },
-            "MENU_RIGHT_CONTACT": 
-            {
-                name: "MENU_RIGHT_CONTACT",
-                html: null,
-                element: null,
-                width: "100px",
-            }
-        }
-
     // == CONSTRUCTOR
     // ======================================================================================
 
@@ -112,12 +72,29 @@ class Main extends React.Component
 
         this.state =
         {
-
+            currentPathname: props.currentPathname,
         }
     }
 
     // == METHODS
     // ======================================================================================
+
+    getActivePage( currentPath )
+    {
+        let retValue = null;
+
+        if(currentPath && typeof currentPath == "string")
+        {
+            let splittedPath = currentPath.split("/");
+
+            if(splittedPath[2])
+            {
+                retValue = splittedPath[2];
+            }
+        }
+
+        return retValue;
+    }
 
     /**
      * 
@@ -126,9 +103,11 @@ class Main extends React.Component
      *  @returns void;
      * 
      */   
-    static getDerivedStateFromProps(props, state)
+    static getDerivedStateFromProps(props)
     {
-        return( {isVisible: props.isVisible} );
+        // VERIFICA E DEFINE A ROTA ATIVA.
+
+        return( { currentPathname: props.currentPathname } );
     }
 
     /**
@@ -140,7 +119,7 @@ class Main extends React.Component
      */
     componentDidMount()
     {
-        this._menuButtonList["MENU_RIGHT_HOME"].element = document.getElementById("MENU_RIGHT_HOME");
+
     }
 
     /**
@@ -164,6 +143,8 @@ class Main extends React.Component
      */
     render()
     {
+        let activePage = this.getActivePage(this.props.currentPathname);
+
         if(!isMobile)
         {
             return(
@@ -188,11 +169,11 @@ class Main extends React.Component
                             
                             <div id="MENU_RIGHT_CONTAINER" className="MENU_RIGHT_CONTAINER">
 
-                            <div id="MENU_RIGHT_HOME" className="MENU_BUTTON_HOME MENU_BUTTON_THREE"> <div className="MENU_BUTTON_CONTENT"> <MenuButton icon={IconHome} color="#02D8F3" text="HOME" /> </div> </div>
-                                <div id="MENU_RIGHT_ABOUT" className="MENU_BUTTON_ABOUT MENU_BUTTON_TWO"> <div className="MENU_BUTTON_CONTENT"> <MenuButton icon={IconAbout} color="#FF00A0" text="SOBRE" /> </div>  </div>
-                                <div id="MENU_RIGHT_CV" className="MENU_BUTTON_CV MENU_BUTTON_THREE"> <div className="MENU_BUTTON_CONTENT"> <MenuButton icon={IconCV} color="#02D8F3" text="C.V" /> </div> </div>
-                                <div id="MENU_RIGHT_PORTFOLIO" className="MENU_BUTTON_PORTFOLIO MENU_BUTTON_TWO"> <div className="MENU_BUTTON_CONTENT"> <MenuButton icon={IconPortfolio} color="#FF00A0" text="PORTFOLIO" /> </div> </div>
-                                <div id="MENU_RIGHT_CONTACT" className="MENU_BUTTON_CONTACT MENU_BUTTON_THREE"> <div className="MENU_BUTTON_CONTENT"> <MenuButton icon={IconContact} color="#02D8F3" text="CONTATO" /> </div> </div>
+                            <div id="MENU_RIGHT_HOME" className={`MENU_BUTTON_HOME MENU_BUTTON_THREE ${ activePage === "home" ? "MENU_BUTTON_HOME_SELECTED" : "" }`} onClick={ (e) => this.props.onClick(e, "home") }> <div className="MENU_BUTTON_CONTENT"> <MenuButton icon={IconHome} color="#02D8F3" text="HOME" /> </div> </div>
+                            <div id="MENU_RIGHT_ABOUT" className={`MENU_BUTTON_ABOUT MENU_BUTTON_TWO ${ activePage === "about" ? "MENU_BUTTON_ABOUT_SELECTED" : "" }`} onClick={ (e) => this.props.onClick(e, "about") }> <div className="MENU_BUTTON_CONTENT"> <MenuButton icon={IconAbout} color="#FF00A0" text="SOBRE" /> </div>  </div>
+                            <div id="MENU_RIGHT_CV" className={`MENU_BUTTON_CV MENU_BUTTON_THREE ${ activePage === "cv" ? "MENU_BUTTON_CV_SELECTED" : "" }`} onClick={ (e) => this.props.onClick(e, "cv") }> <div className="MENU_BUTTON_CONTENT"> <MenuButton icon={IconCV} color="#02D8F3" text="C.V" /> </div> </div>
+                            <div id="MENU_RIGHT_PORTFOLIO" className={`MENU_BUTTON_PORTFOLIO MENU_BUTTON_TWO ${ activePage === "portfolio" ? "MENU_BUTTON_PORTFOLIO_SELECTED" : "" }`} onClick={ (e) => this.props.onClick(e, "portfolio") }> <div className="MENU_BUTTON_CONTENT"> <MenuButton icon={IconPortfolio} color="#FF00A0" text="PORTFOLIO" /> </div> </div>
+                            <div id="MENU_RIGHT_CONTACT" className={`MENU_BUTTON_CONTACT MENU_BUTTON_THREE ${ activePage === "contact" ? "MENU_BUTTON_CONTACT_SELECTED" : "" }`} onClick={ (e) => this.props.onClick(e, "contact") }> <div className="MENU_BUTTON_CONTENT"> <MenuButton icon={IconContact} color="#02D8F3" text="CONTATO" /> </div> </div>
 
                             </div>
 

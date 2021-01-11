@@ -43,8 +43,6 @@ class MenuButton extends React.Component
     // == DECLARATIONS
     // ======================================================================================
 
-    #_icon = null;
-
     // == CONSTRUCTOR
     // ======================================================================================
 
@@ -123,13 +121,13 @@ class MenuButton extends React.Component
         
             <div id="MENU_BUTTON_ROOT" className="MENU_BUTTON_ROOT">
 
-                <div id="MENU_BUTTON_LEFT" className="MENU_BUTTON_LEFT"> 
-                    <this._icon className="MENU_BUTTON_IMAGE" fill={this.props.color}/>
-                </div>
+                    <div id="MENU_BUTTON_LEFT" className="MENU_BUTTON_LEFT"> 
+                        <this._icon className="MENU_BUTTON_IMAGE" fill={this.props.color}/>
+                    </div>
 
-                <div id="MENU_BUTTON_RIGHT" className="MENU_BUTTON_RIGHT" style={ {color: this.props.color} }>
-                    {this.props.text}
-                </div>
+                    <div id="MENU_BUTTON_RIGHT" className="MENU_BUTTON_RIGHT" style={ {color: this.props.color} }>
+                        {this.props.text}
+                    </div>
 
             </div>
         )

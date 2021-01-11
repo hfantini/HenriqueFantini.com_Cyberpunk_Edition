@@ -134,7 +134,7 @@ class FSLoader extends React.Component
     {
         var styles =
         {
-            "display": (this.state.current == COMPONENT_STATE.COMPLETE ? "none" : "flex")
+            "display": (this.state.current === COMPONENT_STATE.COMPLETE ? "none" : "flex")
         }
 
         var classes = classNames(
@@ -146,7 +146,7 @@ class FSLoader extends React.Component
 
         var classesBackground = classNames(
         {
-            "FSLOADER_BACKGROUND": this.state.current == COMPONENT_STATE.LOADING,
+            "FSLOADER_BACKGROUND": this.state.current === COMPONENT_STATE.LOADING,
             "FSLOADER_BACKGROUND_LOADING_ANIM": this.state.current === COMPONENT_STATE.LOADING,
         });
 
@@ -164,7 +164,7 @@ class FSLoader extends React.Component
 
                         <div id="FSLOADER_CONTAINER_SUB" className="FSLOADER_CONTAINER_SUB">
 
-                            <img id="FSLOADER_LOGO" className="FSLOADER_LOGO" src={ImageLogo} />
+                            <img id="FSLOADER_LOGO" alt="LOGO" className="FSLOADER_LOGO" src={ImageLogo} />
 
                         </div>
 

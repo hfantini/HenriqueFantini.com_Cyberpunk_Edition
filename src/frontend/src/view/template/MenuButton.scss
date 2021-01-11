@@ -1,36 +1,60 @@
+@import "../Theme.scss";
+@import "../../mobile-mixins.scss";
+
 .MENU_BUTTON_ROOT
 {
-    height: 100%;
-    display: flex;
-    margin-left: 40px;
-    margin-right: 35px;
-    overflow: hidden;
-
-    .MENU_BUTTON_LEFT
+    @include themify
     {
-        width: 60px;
         height: 100%;
         display: flex;
-        align-items: center;
-        justify-content: flex-end;
+        overflow: hidden;
 
-        .MENU_BUTTON_IMAGE
+        @include responsive("LG")
         {
-            height: 50%;
-            width: auto;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        @include responsive("XL")
+        {
+            margin-left: 40px;
+            margin-right: 35px;
+        }
+
+        .MENU_BUTTON_LEFT
+        {
+            width: 60px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            .MENU_BUTTON_IMAGE
+            {
+                height: 50%;
+                width: auto;
+            }
+        }
+
+        .MENU_BUTTON_RIGHT
+        {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 20px;
+            margin-right: 35px;
+            height: 100%;
+            font-family: "DarknessOfTheNight";
+
+            @include responsive("LG")
+            {
+                font-size: 24px;
+            }
+
+            @include responsive("XL")
+            {
+                font-size: 32px;
+            }
         }
     }
-
-    .MENU_BUTTON_RIGHT
-    {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        padding-left: 20px;
-        margin-right: 35px;
-        height: 100%;
-        font-size: 32px;
-        font-family: "DarknessOfTheNight"
-    }
-
 }

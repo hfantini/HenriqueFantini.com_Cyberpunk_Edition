@@ -9,53 +9,42 @@
     {
         .TEMPLATE_TOP
         {
-            
+            @include responsive("LG")
+            {
+                height: 60px;
+            }
+
+            @include responsive("XL")
+            {
+                height: 90px;
+            }
         }
 
         .TEMPLATE_CONTENT
         {
-           
+            @include responsive("LG")
+            {
+                height: calc( 100% - 60px - 200px );
+            }
+
+            @include responsive("XL")
+            {
+                height: calc( 100% - 90px - 200px );
+            }
         }
 
         .TEMPLATE_FOOTER
         {
+            background-color: themed("color-dark");
 
-        }
-        
-        @include responsive("XS")
-        {
-            .TEMPLATE_TOP
-            {
-                
-            }
-        
-            .TEMPLATE_CONTENT
-            {
-        
-            }
-        
-            .TEMPLATE_FOOTER
-            {
-        
-            }
-        }
-
-        @include responsive("XL")
-        {
-            .TEMPLATE_TOP
-            {
-                height: 90px;
-            }
-        
-            .TEMPLATE_CONTENT
-            {
-                height: calc( 100% - 90px - 200px );
-            }
-        
-            .TEMPLATE_FOOTER
+            @include responsive("LG")
             {
                 height: 200px;
-                background-color: themed("color-dark");
+            }
+
+            @include responsive("XL")
+            {
+                height: 200px;
             }
         }
     }
