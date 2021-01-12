@@ -21,11 +21,25 @@
 // ==========================================================================================
 
 import './Menu.scss';
-import MenuButton from "./MenuButton";
+import MenuButtonDesktop from "./MenuButtonDesktop";
 import MenuLogo from "../../assets/image/png/logo_top.png";
 import {ReactComponent as IconHome} from "../../assets/image/svg/home.svg";
 import {ReactComponent as IconAbout} from "../../assets/image/svg/person.svg";
+import {ReactComponent as IconAboutProfile} from "../../assets/image/svg/profile.svg";
+import {ReactComponent as IconAboutBiografy} from "../../assets/image/svg/scroll.svg";
+import {ReactComponent as IconAboutSkills} from "../../assets/image/svg/jigsaw.svg";
+import {ReactComponent as IconAboutVirtues} from "../../assets/image/svg/check.svg";
+import {ReactComponent as IconAboutFlaws} from "../../assets/image/svg/error.svg";
+import {ReactComponent as IconAboutHobbies} from "../../assets/image/svg/horse_chess_piece.svg";
+import {ReactComponent as IconAboutInterests} from "../../assets/image/svg/speech_bubble_treedots.svg";
 import {ReactComponent as IconCV} from "../../assets/image/svg/cv.svg";
+import {ReactComponent as IconCVPresentation} from "../../assets/image/svg/presentation.svg";
+import {ReactComponent as IconCVExperience} from "../../assets/image/svg/gear.svg";
+import {ReactComponent as IconCVEducation} from "../../assets/image/svg/book.svg";
+import {ReactComponent as IconCVLanguage} from "../../assets/image/svg/language.svg";
+import {ReactComponent as IconCVCourse} from "../../assets/image/svg/blackboard.svg";
+import {ReactComponent as IconCVCertificate} from "../../assets/image/svg/medal.svg";
+import {ReactComponent as IconCVSkill} from "../../assets/image/svg/skill.svg";
 import {ReactComponent as IconPortfolio} from "../../assets/image/svg/briefcase.svg";
 import {ReactComponent as IconContact} from "../../assets/image/svg/mail.svg";
 import {isMobile} from 'react-device-detect';
@@ -97,7 +111,48 @@ class Main extends React.Component
                 icon: IconAbout,
                 subItems: 
                 [
-                    "teste"
+                    {
+                        id:"MENU_SUBITEM_GERAL",
+                        icon: IconAboutProfile,
+                        text: "PROFILE",
+                        subPage: "general"
+                    },
+                    {
+                        id:"MENU_SUBITEM_BIOGRAFY",
+                        icon: IconAboutBiografy,
+                        text: "BIOGRAFY",
+                        subPage: "biografy"
+                    },
+                    {
+                        id:"MENU_SUBITEM_SKILLS",
+                        icon: IconAboutSkills,
+                        text: "SKILLS",
+                        subPage: "skills"
+                    },
+                    {
+                        id:"MENU_SUBITEM_VIRTUES",
+                        icon: IconAboutVirtues,
+                        text: "VIRTUES",
+                        subPage: "virtues"
+                    },
+                    {
+                        id:"MENU_SUBITEM_FLAWS",
+                        icon: IconAboutFlaws,
+                        text: "FLAWS",
+                        subPage: "flaws"
+                    },
+                    {
+                        id:"MENU_SUBITEM_HOBBIES",
+                        icon: IconAboutHobbies,
+                        text: "HOBBIES",
+                        subPage: "hobbies"
+                    },
+                    {
+                        id:"MENU_SUBITEM_INTERESTS",
+                        icon: IconAboutInterests,
+                        text: "INTERESTS",
+                        subPage: "interests"
+                    }
                 ]
             },
             cv:
@@ -109,7 +164,48 @@ class Main extends React.Component
                 icon: IconCV,
                 subItems: 
                 [
-                    "teste"
+                    {
+                        id:"MENU_SUBITEM_PRESENTATION",
+                        icon: IconCVPresentation,
+                        text: "PRESENTATION",
+                        subPage: "presentation"
+                    },
+                    {
+                        id:"MENU_SUBITEM_EXPERIENCE",
+                        icon: IconCVExperience,
+                        text: "EXPERIENCE",
+                        subPage: "experience"
+                    },
+                    {
+                        id:"MENU_SUBITEM_EDUCATION",
+                        icon: IconCVEducation,
+                        text: "EDUCATION",
+                        subPage: "education"
+                    },
+                    {
+                        id:"MENU_SUBITEM_LANGUAGES",
+                        icon: IconCVLanguage,
+                        text: "LANGUAGES",
+                        subPage: "languages"
+                    },
+                    {
+                        id:"MENU_SUBITEM_COURSES",
+                        icon: IconCVCourse,
+                        text: "COURSES",
+                        subPage: "courses"
+                    },
+                    {
+                        id:"MENU_SUBITEM_CERTIFICATES",
+                        icon: IconCVCertificate,
+                        text: "CERTIFICATES",
+                        subPage: "certificates"
+                    },
+                    {
+                        id:"MENU_SUBITEM_SKILLS",
+                        icon: IconCVSkill,
+                        text: "SKILLS",
+                        subPage: "skills"
+                    }
                 ]
             },
             portfolio:
@@ -192,16 +288,16 @@ class Main extends React.Component
                 let currentItem = Object.values(this._menu)[count];
 
                 let pageActive = (this.state.activePage === currentItem.page ? true : false)
-                let backgroundColor = (count % 2 == 0 ? "#FF00A0" : "#02D8F3");
-                let colorPrimary = (count % 2 == 0 ? "#FF00A0" : "#02D8F3");
-                let colorSecondary = (count % 2 == 0 ? "#02D8F3" : "#FF00A0");
+                let backgroundColor = (count % 2 === 0 ? "#FF00A0" : "#02D8F3");
+                let colorPrimary = (count % 2 === 0 ? "#FF00A0" : "#02D8F3");
+                let colorSecondary = (count % 2 === 0 ? "#02D8F3" : "#FF00A0");
 
                 menuButtonList.push ( 
 
-                    <div id={currentItem.id} className={`${currentItem.classes} ${ pageActive ? `MENU_BUTTON_${ currentItem.page.toUpperCase() }_SELECTED` : "" }`} style={ {"background-color": backgroundColor} } onClick={ (e) => this.props.onClick(e, currentItem.page) }> 
+                    <div id={currentItem.id} className={`${currentItem.classes} ${ pageActive ? `MENU_BUTTON_${ currentItem.page.toUpperCase() }_SELECTED` : "" }`} style={ { backgroundColor : backgroundColor} } onClick={ (e) => this.props.onClick(e, currentItem.page) }> 
 
                         <div className="MENU_BUTTON_CONTENT"> 
-                            <MenuButton subItems={currentItem.subItems} active={ pageActive } icon={ currentItem.icon } colorPrimary={colorPrimary} colorSecondary={colorSecondary} text={currentItem.text} /> 
+                            <MenuButtonDesktop subItems={currentItem.subItems} active={ pageActive } icon={ currentItem.icon } colorPrimary={colorPrimary} colorSecondary={colorSecondary} text={currentItem.text} /> 
                         </div> 
 
                     </div> 
@@ -222,7 +318,7 @@ class Main extends React.Component
 
                         <div id="MENU_LEFT" className="MENU_LEFT">
                             
-                            <img src={MenuLogo} id="MENU_IMAGE" className="MENU_IMAGE" />
+                            <img src={MenuLogo} id="MENU_IMAGE" className="MENU_IMAGE" alt="MENU" />
 
                         </div>
 

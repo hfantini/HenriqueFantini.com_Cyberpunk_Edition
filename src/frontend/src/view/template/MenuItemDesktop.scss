@@ -1,0 +1,48 @@
+@import "../Theme.scss";
+@import "../../mobile-mixins.scss";
+
+.MENU_ITEM_DESKTOP_ROOT
+{
+    @include themify
+    {
+        height: calc(100% - 12px);
+        border: 1px solid themed("color-primary");
+        margin-top: 5px;
+        margin-bottom: 9px;
+        margin-right: 5px;
+        cursor: pointer;
+        display: flex;
+
+        .MENU_ITEM_DESKTOP_LEFT
+        {
+            width: 20px;
+
+            .MENU_ITEM_DESKTOP_ICON
+            {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .MENU_ITEM_DESKTOP_RIGHT
+        {
+            height: 100%;
+            color: themed("color-primary");
+            overflow: hidden;
+        }
+
+        .MENU_ITEM_DESKTOP_HIDDEN
+        {
+            width: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+        
+        .MENU_ITEM_DESKTOP_ACTIVE
+        {
+            width: auto;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+    }
+}

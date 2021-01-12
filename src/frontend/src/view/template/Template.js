@@ -28,7 +28,7 @@ import About from "../about/About";
 import Curriculum from "../cv/Curriculum";
 import Portfolio from "../portfolio/Portfolio";
 import Contact from "../contact/Contact";
-import { HashRouter as Router, Switch, Route, Redirect, withRouter } from "react-router-dom";
+import { HashRouter as Router, Switch, Route, withRouter } from "react-router-dom";
 
 import React from 'react';
 

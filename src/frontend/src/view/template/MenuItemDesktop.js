@@ -10,8 +10,8 @@
    
 - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    File: MenuButton.js
-    Date: 2021/01/07
+    File: MenuItemDesktop.js
+    Date: 2021/01/12
 
 + - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - +
 
@@ -20,7 +20,7 @@
 // == IMPORTS
 // ==========================================================================================
 
-import './MenuButton.scss';
+import './MenuItemDesktop.scss';
 
 import React from 'react';
 
@@ -32,13 +32,15 @@ import React from 'react';
 
 /**
  * 
- *  Defines the menu button (Container inside MenuBar).
+ *  Website's bootstrap module.
+ *  Basically it prepares the page to work with URL routes and serves as container 
+ *  to subpages.
  * 
  *  @author Henrique Fantini
  *  @since 0.0.1
  * 
  */
-class MenuButton extends React.Component 
+class MenuItemDesktop extends React.Component 
 {
     // == DECLARATIONS
     // ======================================================================================
@@ -57,15 +59,13 @@ class MenuButton extends React.Component
     {
         super(props);
 
-        this._icon = props.icon; 
-
 		// == VAR & CONST
 
         // == STATE
 
         this.state =
         {
-            active: this.props.active
+
         }
     }
 
@@ -79,9 +79,9 @@ class MenuButton extends React.Component
      *  @returns void;
      * 
      */   
-    static getDerivedStateFromProps(props, state)
+    static getDerivedStateFromProps(props)
     {
-        return( {active: props.active} );
+        return {};
     }
 
     /**
@@ -117,49 +117,24 @@ class MenuButton extends React.Component
      */
     render()
     {
-        return (
-        
-            <div id="MENU_BUTTON_ROOT" className="MENU_BUTTON_ROOT">
+        return ( 
+            
+            <div id="MENU_ITEM_DESKTOP_ROOT" className="MENU_ITEM_DESKTOP_ROOT">
 
-                <div id="MENU_BUTTON_TOP" className="MENU_BUTTON_TOP">
+                <div id="MENU_ITEM_DESKTOP_LEFT" className="MENU_ITEM_DESKTOP_LEFT">
 
-                    <div id="MENU_BUTTON_LEFT" className="MENU_BUTTON_LEFT"> 
-                        <this._icon className="MENU_BUTTON_IMAGE" fill={this.props.colorSecondary}/>
-                    </div>
-
-                    <div id="MENU_BUTTON_RIGHT" className="MENU_BUTTON_RIGHT" style={ {color: this.props.colorSecondary} }>
-                        {this.props.text}
-                    </div>                  
+                    <this.props.icon className="MENU_ITEM_DESKTOP_ICON" fill={"#E1DA23"}/>
 
                 </div>
 
-                <div id="MENU_BUTTON_BOTTOM" className={`MENU_BUTTON_BOTTOM ${ this.props.active && this.props.subItems != null && Array.isArray(this.props.subItems) && this.props.subItems.length > 0 ? "MENU_BUTTON_BOTTOM_VISIBLE" : "MENU_BUTTON_BOTTOM_HIDDEN"}` }>
+                <div id="MENU_ITEM_DESKTOP_RIGHT" className="MENU_ITEM_DESKTOP_RIGHT">
 
-                    <div id="MENU_BUTTON_HITCH" className="MENU_BUTTON_HITCH">
-
-                        <div id="MENU_BUTTON_HITCH_LEFT" className="MENU_BUTTON_HITCH_LEFT" style={ {"background-color": this.props.colorPrimary} }></div>
-                    <div id="MENU_BUTTON_HITCH_RIGHT" className="MENU_BUTTON_HITCH_RIGHT" style={ {"background-color": this.props.colorPrimary} }></div>
-
-                    </div>
-
-                    <div id="MENU_BUTTON_SUBITEM_CONTAINER" className="MENU_BUTTON_SUBITEM_CONTAINER" style={ {"background-color": this.props.colorPrimary} }>
-
-                        <div id="MENU_BUTTON_SUBITEM_CONTAINER_2" className="MENU_BUTTON_SUBITEM_CONTAINER_2">
-
-                            <div id="MENU_BUTTON_SUBITEM_CONTENT" className="MENU_BUTTON_SUBITEM_CONTENT">
-
-                                SUBITEM CONTAINER
-
-                            </div>
-
-                        </div>
-
-                    </div>
+                    {this.props.text}
 
                 </div>
 
-            </div>
-        )
+            </div> 
+        );
     }
 
     // == EVENTS
@@ -172,4 +147,4 @@ class MenuButton extends React.Component
 // == EXPORTS
 // ==========================================================================================
 
-export default MenuButton;
+export default MenuItemDesktop;
