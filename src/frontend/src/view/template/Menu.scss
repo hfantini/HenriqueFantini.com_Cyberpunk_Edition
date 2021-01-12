@@ -1,7 +1,7 @@
 @import "../Theme.scss";
 @import "../../mobile-mixins.scss";
 
-.MENU_ROOT
+.MENU_ROOT_DESKTOP
 {
     @include themify
     {
@@ -45,6 +45,8 @@
                 align-items: center;
                 justify-content: center;
                 z-index: 10;
+                transition: width 500ms;
+                transition: margin 500ms;
 
                 @include responsive("LG")
                 {
@@ -85,6 +87,8 @@
                 align-items: center;
                 justify-content: flex-end;
                 z-index: 10;
+                transition: width 500ms;
+                transition: margin 500ms;
 
                 @include responsive("LG")
                 {
@@ -134,6 +138,16 @@
 
                         @include responsive("XL")
                         {
+                            width: 100px;
+                        }
+        
+                        @include responsive("XXL")
+                        {
+                            width: 115px;
+                        }
+
+                        @include responsive("XXXL")
+                        {
                             width: 130px;
                         }
 
@@ -159,6 +173,16 @@
 
                         @include responsive("XL")
                         {
+                            width: 220px;
+                        }
+
+                        @include responsive("XXL")
+                        {
+                            width: 245px;
+                        }
+   
+                        @include responsive("XXXL")
+                        {
                             width: 280px;
                         }
                     }
@@ -175,7 +199,25 @@
 
                     .MENU_BUTTON_ABOUT_SELECTED
                     {
-                        width: 280px;
+                        @include responsive("LG")
+                        {
+                            width: 190px;
+                        }
+
+                        @include responsive("XL")
+                        {
+                            width: 235px;
+                        }
+
+                        @include responsive("XXL")
+                        {
+                            width: 260px;
+                        }
+
+                        @include responsive("XXXL")
+                        {
+                            width: 280px;
+                        }
                     }   
 
                     .MENU_BUTTON_ABOUT:hover
@@ -190,7 +232,25 @@
 
                     .MENU_BUTTON_CV_SELECTED
                     {
-                        width: 200px;
+                        @include responsive("LG")
+                        {
+                            width: 135px;
+                        }
+
+                        @include responsive("XL")
+                        {
+                            width: 175px;
+                        }
+
+                        @include responsive("XXL")
+                        {
+                            width: 190px;
+                        }
+
+                        @include responsive("XXXL")
+                        {
+                            width: 200px;
+                        }
                     }   
 
                     .MENU_BUTTON_CV:hover
@@ -205,7 +265,25 @@
 
                     .MENU_BUTTON_PORTFOLIO_SELECTED
                     {
-                        width: 350px;
+                        @include responsive("LG")
+                        {
+                            width: 235px;
+                        }
+
+                        @include responsive("XL")
+                        {
+                            width: 305px;
+                        }
+
+                        @include responsive("XXL")
+                        {
+                            width: 320px;
+                        }
+
+                        @include responsive("XXXL")
+                        {
+                            width: 350px;
+                        }
                     }   
 
                     .MENU_BUTTON_PORTFOLIO:hover
@@ -220,7 +298,25 @@
 
                     .MENU_BUTTON_CONTACT_SELECTED
                     {
-                        width: 305px;
+                        @include responsive("LG")
+                        {
+                            width: 215px;
+                        }
+
+                        @include responsive("XL")
+                        {
+                            width: 285px;
+                        }
+
+                        @include responsive("XXL")
+                        {
+                            width: 295px;
+                        }
+
+                        @include responsive("XXXL")
+                        {
+                            width: 350px;
+                        }
                     }
 
                     .MENU_BUTTON_CONTACT:hover

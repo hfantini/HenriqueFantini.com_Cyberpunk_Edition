@@ -149,7 +149,7 @@ class Main extends React.Component
         {
             return(
             
-                <div id="MENU_ROOT" className="MENU_ROOT">
+                <div id="MENU_ROOT_DESKTOP" className="MENU_ROOT_DESKTOP">
 
                     <div id="MENU_CONTENT" className="MENU_CONTENT">
 

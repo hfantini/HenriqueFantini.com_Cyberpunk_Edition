@@ -9,6 +9,8 @@
     {
         .TEMPLATE_TOP
         {
+            transition: height 500ms;
+
             @include responsive("LG")
             {
                 height: 60px;
@@ -16,12 +18,19 @@
 
             @include responsive("XL")
             {
+                height: 70px;
+            }
+
+            @include responsive("XXL")
+            {
                 height: 90px;
             }
         }
 
         .TEMPLATE_CONTENT
         {
+            transition: height 500ms;
+
             @include responsive("LG")
             {
                 height: calc( 100% - 60px - 200px );
@@ -29,20 +38,21 @@
 
             @include responsive("XL")
             {
+                height: calc( 100% - 70px - 200px );
+            }
+
+            @include responsive("XXL")
+            {
                 height: calc( 100% - 90px - 200px );
             }
         }
 
         .TEMPLATE_FOOTER
         {
+            transition: height 500ms;
             background-color: themed("color-dark");
 
             @include responsive("LG")
-            {
-                height: 200px;
-            }
-
-            @include responsive("XL")
             {
                 height: 200px;
             }

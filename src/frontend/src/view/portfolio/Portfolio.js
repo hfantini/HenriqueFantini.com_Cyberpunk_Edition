@@ -20,7 +20,7 @@
 // == IMPORTS
 // ==========================================================================================
 
-import './portfolio.scss';
+import './Portfolio.scss';
 
 import React from 'react';
 

@@ -20,7 +20,7 @@
 // == IMPORTS
 // ==========================================================================================
 
-import './contact.scss';
+import './Contact.scss';
 import React from 'react';
 
 // == CONSTANTS
