@@ -87,6 +87,7 @@ class Main extends React.Component
         this.state =
         {
             activePage: props.activePage,
+            activeSubPage: props.activeSubPage
         }
 
         // == MENUS
@@ -115,7 +116,7 @@ class Main extends React.Component
                         id:"MENU_SUBITEM_GERAL",
                         icon: IconAboutProfile,
                         text: "PROFILE",
-                        subPage: "general"
+                        subPage: "profile"
                     },
                     {
                         id:"MENU_SUBITEM_BIOGRAFY",
@@ -243,7 +244,7 @@ class Main extends React.Component
     {
         // VERIFICA E DEFINE A ROTA ATIVA.
 
-        return( { activePage: props.activePage } );
+        return( { activePage: props.activePage, activeSubPage: props.activeSubPage} );
     }
 
     /**
@@ -294,10 +295,10 @@ class Main extends React.Component
 
                 menuButtonList.push ( 
 
-                    <div id={currentItem.id} className={`${currentItem.classes} ${ pageActive ? `MENU_BUTTON_${ currentItem.page.toUpperCase() }_SELECTED` : "" }`} style={ { backgroundColor : backgroundColor} } onClick={ (e) => this.props.onClick(e, currentItem.page) }> 
+                    <div id={currentItem.id} className={`${currentItem.classes} ${ pageActive ? `MENU_BUTTON_${ currentItem.page.toUpperCase() }_SELECTED` : "" }`} style={ { backgroundColor : backgroundColor} }> 
 
                         <div className="MENU_BUTTON_CONTENT"> 
-                            <MenuButtonDesktop subItems={currentItem.subItems} active={ pageActive } icon={ currentItem.icon } colorPrimary={colorPrimary} colorSecondary={colorSecondary} text={currentItem.text} /> 
+                            <MenuButtonDesktop subItems={currentItem.subItems} page={ currentItem.page } active={ pageActive } activeSubPage={this.state.activeSubPage} icon={ currentItem.icon } colorPrimary={colorPrimary} colorSecondary={colorSecondary} text={currentItem.text} onMenuItemClickEvent={ this.props.onMenuItemClickEvent } onSubMenuItemClickEvent={ this.props.onSubMenuItemClickEvent } /> 
                         </div> 
 
                     </div> 

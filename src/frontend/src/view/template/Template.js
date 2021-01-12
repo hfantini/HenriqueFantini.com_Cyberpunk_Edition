@@ -86,9 +86,9 @@ class Template extends React.Component
      *  @param currentPath String that defines the current URL Path. Obtained from React-Router.
      * 
      */
-    getActivePage( currentPath )
+    getActivePath( currentPath )
     {
-        let retValue = null;
+        let retValue = { page: null, subPage: null };
 
         if(currentPath && typeof currentPath == "string")
         {
@@ -96,7 +96,12 @@ class Template extends React.Component
 
             if(splittedPath[2])
             {
-                retValue = splittedPath[2];
+                retValue.page = splittedPath[2];
+            }
+
+            if(splittedPath[3])
+            {
+                retValue.subPage = splittedPath[3];
             }
         }
 
@@ -148,7 +153,7 @@ class Template extends React.Component
      */
     render()
     {
-        let activePage = this.getActivePage(this.props.location.pathname);
+        let activePath = this.getActivePath(this.props.location.pathname);
 
         return( 
 
@@ -156,7 +161,7 @@ class Template extends React.Component
 
                 <div className="TEMPLATE_TOP">
 
-                    <Menu activePage={activePage} onClick={ (e, page) => { this.onMenuItemClick(e, page) } }/>
+                    <Menu activePage={activePath.page} activeSubPage={activePath.subPage} onMenuItemClickEvent={ (e, page) => { this.onMenuItemClick(e, page) } } onSubMenuItemClickEvent={ (e, page, subPage) => { this.onSubMenuItemClick(e, page, subPage) } }/>
 
                 </div>
 
@@ -178,9 +183,21 @@ class Template extends React.Component
 
                         </Route>
 
+                        <Route exact path="/:lang/about/:subPage">
+                        
+                            <About/>
+
+                        </Route>
+
                         <Route exact path="/:lang/cv">
                         
                             <Curriculum/>
+
+                        </Route>
+
+                        <Route exact path="/:lang/cv/:subPage">
+                        
+                            <About/>
 
                         </Route>
 
@@ -218,6 +235,11 @@ class Template extends React.Component
     onMenuItemClick( e, page )
     {
         this.props.history.push(`/en/${page}`);
+    }
+
+    onSubMenuItemClick( e, page, subPage )
+    {
+        this.props.history.push(`/en/${page}/${subPage}`);
     }
 
     // == GETTERS AND SETTERS

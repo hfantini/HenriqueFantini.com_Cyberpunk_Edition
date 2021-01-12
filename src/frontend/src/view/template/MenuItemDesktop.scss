@@ -5,44 +5,61 @@
 {
     @include themify
     {
-        height: calc(100% - 12px);
-        border: 1px solid themed("color-primary");
-        margin-top: 5px;
-        margin-bottom: 9px;
-        margin-right: 5px;
-        cursor: pointer;
         display: flex;
-
-        .MENU_ITEM_DESKTOP_LEFT
+        align-items: center;
+        .MENU_ITEM_DESKTOP_CONTAINER
         {
-            width: 20px;
+            height: 25px;
+            border: 1px solid themed("color-primary");
+            margin-right: 5px;
+            cursor: pointer;
+            display: flex;
 
-            .MENU_ITEM_DESKTOP_ICON
+            .MENU_ITEM_DESKTOP_LEFT
             {
-                width: 100%;
-                height: auto;
+                width: 25px;
+                height: 100%;
+
+                .MENU_ITEM_DESKTOP_ICON
+                {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+
+            .MENU_ITEM_DESKTOP_RIGHT
+            {
+                height: 100%;
+                color: themed("color-primary");
+                overflow: hidden;
+                transition: all 250ms;
+            }
+        
+        }
+
+        .MENU_ITEM_DESKTOP_CONTAINER:hover
+        {
+            @extend .MENU_ITEM_DESKTOP_CONTAINER_VISIBLE;
+        }
+
+        .MENU_ITEM_DESKTOP_CONTAINER_HIDDEN
+        {
+            .MENU_ITEM_DESKTOP_RIGHT
+            {
+                max-width: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
             }
         }
-
-        .MENU_ITEM_DESKTOP_RIGHT
-        {
-            height: 100%;
-            color: themed("color-primary");
-            overflow: hidden;
-        }
-
-        .MENU_ITEM_DESKTOP_HIDDEN
-        {
-            width: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-        }
         
-        .MENU_ITEM_DESKTOP_ACTIVE
+        .MENU_ITEM_DESKTOP_CONTAINER_VISIBLE
         {
-            width: auto;
-            padding-left: 0px;
-            padding-right: 0px;
+            .MENU_ITEM_DESKTOP_RIGHT
+            {
+                max-width: 200px;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
         }
     }
 }

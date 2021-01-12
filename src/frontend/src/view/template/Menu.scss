@@ -51,13 +51,13 @@
                 @include responsive("LG")
                 {
                     width: 200px;
-                    margin-left: 0%;
+                    margin-left: 10%;
                 }
 
                 @include responsive("XL")
                 {
                     width: 300px;
-                    margin-left: 0%;
+                    margin-left: 5%;
                 }
 
                 @include responsive("XXL")
@@ -92,13 +92,13 @@
                 @include responsive("LG")
                 {
                     width: calc(100% - 200px);
-                    margin-right: 0%;
+                    margin-right: 10%;
                 }
 
                 @include responsive("XL")
                 {
                     width: calc(100% - 300px);
-                    margin-right: 0%;
+                    margin-right: 5%;
                 }
 
                 @include responsive("XXL")

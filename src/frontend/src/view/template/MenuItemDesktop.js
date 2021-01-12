@@ -65,7 +65,7 @@ class MenuItemDesktop extends React.Component
 
         this.state =
         {
-
+            active: props.active
         }
     }
 
@@ -81,7 +81,7 @@ class MenuItemDesktop extends React.Component
      */   
     static getDerivedStateFromProps(props)
     {
-        return {};
+        return { active: props.active };
     }
 
     /**
@@ -117,19 +117,25 @@ class MenuItemDesktop extends React.Component
      */
     render()
     {
+        let active = this.state.active;
+
         return ( 
             
-            <div id="MENU_ITEM_DESKTOP_ROOT" className="MENU_ITEM_DESKTOP_ROOT">
+            <div id="MENU_ITEM_DESKTOP_ROOT" className="MENU_ITEM_DESKTOP_ROOT" onClick={ (e) => { this.props.onSubMenuItemClickEvent(e, this.props.page, this.props.subPage) } }>
 
-                <div id="MENU_ITEM_DESKTOP_LEFT" className="MENU_ITEM_DESKTOP_LEFT">
+                <div id="MENU_ITEM_DESKTOP_CONTAINER" className={`MENU_ITEM_DESKTOP_CONTAINER ${active ? "MENU_ITEM_DESKTOP_CONTAINER_VISIBLE" : "MENU_ITEM_DESKTOP_CONTAINER_HIDDEN"}`}>
 
-                    <this.props.icon className="MENU_ITEM_DESKTOP_ICON" fill={"#E1DA23"}/>
+                    <div id="MENU_ITEM_DESKTOP_LEFT" className="MENU_ITEM_DESKTOP_LEFT">
 
-                </div>
+                        <this.props.icon className="MENU_ITEM_DESKTOP_ICON" fill={"#E1DA23"}/>
 
-                <div id="MENU_ITEM_DESKTOP_RIGHT" className="MENU_ITEM_DESKTOP_RIGHT">
+                    </div>
 
-                    {this.props.text}
+                    <div id="MENU_ITEM_DESKTOP_RIGHT" className={`MENU_ITEM_DESKTOP_RIGHT`}>
+
+                        {this.props.text}
+
+                    </div>
 
                 </div>
 
