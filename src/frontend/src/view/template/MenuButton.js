@@ -65,7 +65,7 @@ class MenuButton extends React.Component
 
         this.state =
         {
-            showSubItemContainer: this.props.showSubItemContainer
+            active: this.props.active
         }
     }
 
@@ -81,7 +81,7 @@ class MenuButton extends React.Component
      */   
     static getDerivedStateFromProps(props, state)
     {
-        return( {showSubItemContainer: props.showSubItemContainer} );
+        return( {active: props.active} );
     }
 
     /**
@@ -133,7 +133,7 @@ class MenuButton extends React.Component
 
                 </div>
 
-                <div id="MENU_BUTTON_BOTTOM" className={`MENU_BUTTON_BOTTOM ${ this.props.showSubItemContainer ? "MENU_BUTTON_BOTTOM_VISIBLE" : "MENU_BUTTON_BOTTOM_HIDDEN"}` }>
+                <div id="MENU_BUTTON_BOTTOM" className={`MENU_BUTTON_BOTTOM ${ this.props.active && this.props.subItems != null && Array.isArray(this.props.subItems) && this.props.subItems.length > 0 ? "MENU_BUTTON_BOTTOM_VISIBLE" : "MENU_BUTTON_BOTTOM_HIDDEN"}` }>
 
                     <div id="MENU_BUTTON_HITCH" className="MENU_BUTTON_HITCH">
 
