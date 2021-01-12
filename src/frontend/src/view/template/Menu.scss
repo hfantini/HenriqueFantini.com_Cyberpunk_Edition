@@ -74,7 +74,6 @@
 
                 .MENU_IMAGE
                 {
-                    //-webkit-transform: skew(50deg);
                     width: auto;
                     height: 80%;
                 }
@@ -323,21 +322,6 @@
                     {
                         @extend .MENU_BUTTON_CONTACT_SELECTED
                     }                       
-
-                    .MENU_BUTTON_ONE
-                    {
-                        background-color: themed("color-secondary");
-                    }
-
-                    .MENU_BUTTON_TWO
-                    {
-                        background-color: themed("color-ternary");
-                    }
-
-                    .MENU_BUTTON_THREE
-                    {
-                        background-color: themed("color-quaternary");
-                    }
                 }
             }
         }

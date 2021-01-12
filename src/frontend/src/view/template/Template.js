@@ -81,6 +81,30 @@ class Template extends React.Component
 
     /**
      * 
+     *  Obtain through currentPath the active page.
+     * 
+     *  @param currentPath String that defines the current URL Path. Obtained from React-Router.
+     * 
+     */
+    getActivePage( currentPath )
+    {
+        let retValue = null;
+
+        if(currentPath && typeof currentPath == "string")
+        {
+            let splittedPath = currentPath.split("/");
+
+            if(splittedPath[2])
+            {
+                retValue = splittedPath[2];
+            }
+        }
+
+        return retValue;
+    }
+
+    /**
+     * 
      *  Called when component receive props from parent
      * 
      *  @returns void;
@@ -124,13 +148,15 @@ class Template extends React.Component
      */
     render()
     {
+        let activePage = this.getActivePage(this.props.location.pathname);
+
         return( 
 
             <div className="TEMPLATE_ROOT">
 
                 <div className="TEMPLATE_TOP">
 
-                    <Menu currentPathname={this.props.location.pathname} onClick={ (e, page) => { this.onMenuItemClick(e, page) } }/>
+                    <Menu activePage={activePage} onClick={ (e, page) => { this.onMenuItemClick(e, page) } }/>
 
                 </div>
 

@@ -65,7 +65,7 @@ class MenuButton extends React.Component
 
         this.state =
         {
-
+            showSubItemContainer: this.props.showSubItemContainer
         }
     }
 
@@ -81,7 +81,7 @@ class MenuButton extends React.Component
      */   
     static getDerivedStateFromProps(props, state)
     {
-        return( {isVisible: props.isVisible} );
+        return( {showSubItemContainer: props.showSubItemContainer} );
     }
 
     /**
@@ -121,13 +121,42 @@ class MenuButton extends React.Component
         
             <div id="MENU_BUTTON_ROOT" className="MENU_BUTTON_ROOT">
 
+                <div id="MENU_BUTTON_TOP" className="MENU_BUTTON_TOP">
+
                     <div id="MENU_BUTTON_LEFT" className="MENU_BUTTON_LEFT"> 
-                        <this._icon className="MENU_BUTTON_IMAGE" fill={this.props.color}/>
+                        <this._icon className="MENU_BUTTON_IMAGE" fill={this.props.colorSecondary}/>
                     </div>
 
-                    <div id="MENU_BUTTON_RIGHT" className="MENU_BUTTON_RIGHT" style={ {color: this.props.color} }>
+                    <div id="MENU_BUTTON_RIGHT" className="MENU_BUTTON_RIGHT" style={ {color: this.props.colorSecondary} }>
                         {this.props.text}
+                    </div>                  
+
+                </div>
+
+                <div id="MENU_BUTTON_BOTTOM" className={`MENU_BUTTON_BOTTOM ${ this.props.showSubItemContainer ? "MENU_BUTTON_BOTTOM_VISIBLE" : "MENU_BUTTON_BOTTOM_HIDDEN"}` }>
+
+                    <div id="MENU_BUTTON_HITCH" className="MENU_BUTTON_HITCH">
+
+                        <div id="MENU_BUTTON_HITCH_LEFT" className="MENU_BUTTON_HITCH_LEFT" style={ {"background-color": this.props.colorPrimary} }></div>
+                    <div id="MENU_BUTTON_HITCH_RIGHT" className="MENU_BUTTON_HITCH_RIGHT" style={ {"background-color": this.props.colorPrimary} }></div>
+
                     </div>
+
+                    <div id="MENU_BUTTON_SUBITEM_CONTAINER" className="MENU_BUTTON_SUBITEM_CONTAINER" style={ {"background-color": this.props.colorPrimary} }>
+
+                        <div id="MENU_BUTTON_SUBITEM_CONTAINER_2" className="MENU_BUTTON_SUBITEM_CONTAINER_2">
+
+                            <div id="MENU_BUTTON_SUBITEM_CONTENT" className="MENU_BUTTON_SUBITEM_CONTENT">
+
+                                SUBITEM CONTAINER
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
         )

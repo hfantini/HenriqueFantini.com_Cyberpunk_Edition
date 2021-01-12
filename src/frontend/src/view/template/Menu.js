@@ -72,29 +72,12 @@ class Main extends React.Component
 
         this.state =
         {
-            currentPathname: props.currentPathname,
+            activePage: props.activePage,
         }
     }
 
     // == METHODS
     // ======================================================================================
-
-    getActivePage( currentPath )
-    {
-        let retValue = null;
-
-        if(currentPath && typeof currentPath == "string")
-        {
-            let splittedPath = currentPath.split("/");
-
-            if(splittedPath[2])
-            {
-                retValue = splittedPath[2];
-            }
-        }
-
-        return retValue;
-    }
 
     /**
      * 
@@ -107,7 +90,7 @@ class Main extends React.Component
     {
         // VERIFICA E DEFINE A ROTA ATIVA.
 
-        return( { currentPathname: props.currentPathname } );
+        return( { activePage: props.activePage } );
     }
 
     /**
@@ -143,8 +126,6 @@ class Main extends React.Component
      */
     render()
     {
-        let activePage = this.getActivePage(this.props.currentPathname);
-
         if(!isMobile)
         {
             return(
@@ -169,11 +150,11 @@ class Main extends React.Component
                             
                             <div id="MENU_RIGHT_CONTAINER" className="MENU_RIGHT_CONTAINER">
 
-                            <div id="MENU_RIGHT_HOME" className={`MENU_BUTTON_HOME MENU_BUTTON_THREE ${ activePage === "home" ? "MENU_BUTTON_HOME_SELECTED" : "" }`} onClick={ (e) => this.props.onClick(e, "home") }> <div className="MENU_BUTTON_CONTENT"> <MenuButton icon={IconHome} color="#02D8F3" text="HOME" /> </div> </div>
-                            <div id="MENU_RIGHT_ABOUT" className={`MENU_BUTTON_ABOUT MENU_BUTTON_TWO ${ activePage === "about" ? "MENU_BUTTON_ABOUT_SELECTED" : "" }`} onClick={ (e) => this.props.onClick(e, "about") }> <div className="MENU_BUTTON_CONTENT"> <MenuButton icon={IconAbout} color="#FF00A0" text="SOBRE" /> </div>  </div>
-                            <div id="MENU_RIGHT_CV" className={`MENU_BUTTON_CV MENU_BUTTON_THREE ${ activePage === "cv" ? "MENU_BUTTON_CV_SELECTED" : "" }`} onClick={ (e) => this.props.onClick(e, "cv") }> <div className="MENU_BUTTON_CONTENT"> <MenuButton icon={IconCV} color="#02D8F3" text="C.V" /> </div> </div>
-                            <div id="MENU_RIGHT_PORTFOLIO" className={`MENU_BUTTON_PORTFOLIO MENU_BUTTON_TWO ${ activePage === "portfolio" ? "MENU_BUTTON_PORTFOLIO_SELECTED" : "" }`} onClick={ (e) => this.props.onClick(e, "portfolio") }> <div className="MENU_BUTTON_CONTENT"> <MenuButton icon={IconPortfolio} color="#FF00A0" text="PORTFOLIO" /> </div> </div>
-                            <div id="MENU_RIGHT_CONTACT" className={`MENU_BUTTON_CONTACT MENU_BUTTON_THREE ${ activePage === "contact" ? "MENU_BUTTON_CONTACT_SELECTED" : "" }`} onClick={ (e) => this.props.onClick(e, "contact") }> <div className="MENU_BUTTON_CONTENT"> <MenuButton icon={IconContact} color="#02D8F3" text="CONTATO" /> </div> </div>
+                            <div id="MENU_RIGHT_HOME" className={`MENU_BUTTON_HOME ${ this.state.activePage === "home" ? "MENU_BUTTON_HOME_SELECTED" : "" }`} style={ {"background-color": "#FF00A0"} } onClick={ (e) => this.props.onClick(e, "home") }> <div className="MENU_BUTTON_CONTENT"> <MenuButton showSubItemContainer={ this.state.activePage === "home" } icon={IconHome} colorPrimary="#FF00A0" colorSecondary="#02D8F3" text="HOME" /> </div> </div>
+                            <div id="MENU_RIGHT_ABOUT" className={`MENU_BUTTON_ABOUT ${ this.state.activePage === "about" ? "MENU_BUTTON_ABOUT_SELECTED" : "" }`} style={ {"background-color": "#02D8F3"} } onClick={ (e) => this.props.onClick(e, "about") }> <div className="MENU_BUTTON_CONTENT"> <MenuButton showSubItemContainer={ this.state.activePage === "about" } icon={IconAbout} colorPrimary="#02D8F3" colorSecondary="#FF00A0" text="SOBRE" /> </div>  </div>
+                            <div id="MENU_RIGHT_CV" className={`MENU_BUTTON_CV ${ this.state.activePage === "cv" ? "MENU_BUTTON_CV_SELECTED" : "" }`} style={ {"background-color": "#FF00A0"} } onClick={ (e) => this.props.onClick(e, "cv") }> <div className="MENU_BUTTON_CONTENT"> <MenuButton showSubItemContainer={ this.state.activePage === "cv" } icon={IconCV} colorPrimary="#FF00A0" colorSecondary="#02D8F3" text="C.V" /> </div> </div>
+                            <div id="MENU_RIGHT_PORTFOLIO" className={`MENU_BUTTON_PORTFOLIO ${ this.state.activePage === "portfolio" ? "MENU_BUTTON_PORTFOLIO_SELECTED" : "" }`} style={ {"background-color": "#02D8F3"} } onClick={ (e) => this.props.onClick(e, "portfolio") }> <div className="MENU_BUTTON_CONTENT"> <MenuButton showSubItemContainer={ this.state.activePage === "portfolio" } icon={IconPortfolio} colorPrimary="#02D8F3" colorSecondary="#FF00A0" text="PORTFOLIO" /> </div> </div>
+                            <div id="MENU_RIGHT_CONTACT" className={`MENU_BUTTON_CONTACT ${ this.state.activePage === "contact" ? "MENU_BUTTON_CONTACT_SELECTED" : "" }`} style={ {"background-color": "#FF00A0"} } onClick={ (e) => this.props.onClick(e, "contact") }> <div className="MENU_BUTTON_CONTENT"> <MenuButton showSubItemContainer={ this.state.activePage === "contact" } icon={IconContact} colorPrimary="#FF00A0" colorSecondary="#02D8F3" text="CONTATO" /> </div> </div>
 
                             </div>
 
