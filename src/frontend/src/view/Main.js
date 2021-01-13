@@ -26,6 +26,7 @@ import { HashRouter as Router, Switch, Route, Redirect } from "react-router-dom"
 import './Main.scss';
 import FSLoader from './loader/FSLoader'
 import Template from './template/Template'
+import ViewportUtil from "../util/ViewportUtil";
 
 // == CONSTANTS
 // ==========================================================================================
@@ -70,7 +71,8 @@ class Main extends React.Component
 
         this.state =
         {
-            loading: true
+            loading: true,
+            isMobile: ViewportUtil.isMobile(),
         }
     }
 
@@ -87,6 +89,9 @@ class Main extends React.Component
     componentDidMount()
     {
         var self = this;
+
+        this.onWindowResize = this.onWindowResize.bind(this);
+        window.addEventListener("resize", this.onWindowResize);
 
         if(process.env.NODE_ENV === 'development')
         {
@@ -111,7 +116,7 @@ class Main extends React.Component
      */    
     componentWillUnmount()
     {
-        
+        window.removeEventListener("resize", this.onWindowResize);
     }
 
     /**
@@ -123,6 +128,8 @@ class Main extends React.Component
      */
     render()
     {
+        console.log(this.state.isMobile);
+
         return(
 
             <div id="WS_ROOT" className="WS_ROOT">
@@ -148,6 +155,19 @@ class Main extends React.Component
 
     // == EVENTS
     // ======================================================================================
+
+    /**
+     * 
+     *  Event called when window's resize.
+     * 
+     *  @param evt resize event data
+     *  @returns void; 
+     * 
+     */
+    onWindowResize(evt)
+    {
+        this.setState( { isMobile: ViewportUtil.isMobile() } )
+    }
 
     // == GETTERS AND SETTERS
     // ======================================================================================
