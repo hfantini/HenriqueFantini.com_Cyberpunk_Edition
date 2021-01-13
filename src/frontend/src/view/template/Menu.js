@@ -23,6 +23,10 @@
 import './Menu.scss';
 import MenuButtonDesktop from "./MenuButtonDesktop";
 import MenuLogo from "../../assets/image/png/logo_top.png";
+import MenuLogoMobile from "../../assets/image/png/logo_top_mobile.png";
+import {ReactComponent as MenuBackgroundMobile} from "../../assets/image/svg/circuit_single.svg";
+import MenuIcon from "../../assets/image/png/menu_mobile.png";
+import MenuCloseIcon from "../../assets/image/png/close_mobile.png";
 import {ReactComponent as IconHome} from "../../assets/image/svg/home.svg";
 import {ReactComponent as IconAbout} from "../../assets/image/svg/person.svg";
 import {ReactComponent as IconAboutProfile} from "../../assets/image/svg/profile.svg";
@@ -230,6 +234,11 @@ class Main extends React.Component
                 subItems: []
             },
         }
+
+        // == BINDING
+
+        this.onMenuClick = this.onMenuClick.bind(this);
+        this.onMenuCloseClick = this.onMenuCloseClick.bind(this);
     }
 
     // == METHODS
@@ -284,7 +293,57 @@ class Main extends React.Component
     {
         if( this.context.state.isMobile )
         {
-            return(<div>MENU MOBILE</div>);
+            return (
+
+                <div id="MENU_ROOT_MOBILE" className="MENU_ROOT_MOBILE">
+
+                    <div id="MENU_MOBILE_OVERLAY" className={`MENU_MOBILE_OVERLAY`}>
+
+                        <div id="MENU_MOBILE_OVERLAY_BACKGROUND" className="MENU_MOBILE_OVERLAY_BACKGROUND">
+
+                            <MenuBackgroundMobile id="MENU_MOBILE_OVERLAY_BACKGROUND_IMAGE" className="MENU_MOBILE_OVERLAY_BACKGROUND_IMAGE" fill={"#E1DA23"} />
+
+                        </div>
+
+                        <div id="MENU_MOBILE_OVERLAY_TOP" className="MENU_MOBILE_OVERLAY_TOP">
+                            
+                            <img src={MenuCloseIcon} className="MENU_MOBILE_OVERLAY_TOP_CLOSE" alt="CLOSE" onClick={ (e) => { this.onMenuCloseClick(e) } } />
+
+                        </div>
+
+                        <div id="MENU_MOBILE_OVERLAY_LOGO" className="MENU_MOBILE_OVERLAY_LOGO">
+                            
+                        </div>
+
+                        <div id="MENU_MOBILE_OVERLAY_CONTENT" className="MENU_MOBILE_OVERLAY_CONTENT">
+                            
+                        </div>
+
+                    </div>
+
+                    <div id="MENU_MOBILE_CONTENT" className="MENU_MOBILE_CONTENT">
+
+                        <div id="MENU_MOBILE_LEFT" className="MENU_MOBILE_LEFT">
+
+                            <div id="MENU_MOBILE_LOGO_CONTAINER" className="MENU_MOBILE_LOGO_CONTAINER">
+                            
+                                <div id="MENU_MOBILE_LOGO_BACKGROUND" className="MENU_MOBILE_LOGO_BACKGROUND"> </div>
+                                <img src={MenuLogoMobile} id="MENU_MOBILE_LOGO_IMAGE" className="MENU_MOBILE_LOGO_IMAGE" alt="MENU" />
+
+                            </div>
+
+                        </div>
+
+                        <div id="MENU_MOBILE_RIGHT" className="MENU_MOBILE_RIGHT">
+        
+                            <img src={MenuIcon} id="MENU_MOBILE_ICON_IMAGE" className="MENU_MOBILE_ICON_IMAGE" alt="MENU" onClick={ (e) => { this.onMenuClick(e) } } />
+
+                        </div>
+
+                    </div>
+
+                </div>
+            );
         }
         else
         {
@@ -348,6 +407,27 @@ class Main extends React.Component
 
     // == EVENTS
     // ======================================================================================
+
+    onMenuClick(e)
+    {
+        var element = document.getElementById("MENU_MOBILE_OVERLAY");
+        element.style.top = "0%";
+        element.classList.add("MENU_MOBILE_OVERLAY_ANIM_OPEN");
+        element.classList.remove("MENU_MOBILE_OVERLAY_ANIM_CLOSE");
+    }
+
+    onMenuCloseClick(e)
+    {
+        var element = document.getElementById("MENU_MOBILE_OVERLAY");
+        element.classList.remove("MENU_MOBILE_OVERLAY_ANIM_OPEN");
+        element.classList.add("MENU_MOBILE_OVERLAY_ANIM_CLOSE");
+
+        setTimeout(() => 
+        {
+            element.style.top = "-100%"; 
+        }, 300);
+        
+    }
 
     // == GETTERS AND SETTERS
     // ======================================================================================

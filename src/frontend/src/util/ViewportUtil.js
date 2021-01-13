@@ -49,7 +49,7 @@ class ViewportUtil
     {
         let retValue = false;
 
-        if( window.innerWidth < 992 )
+        if( window.outerWidth < 992 )
         {
             retValue = true;
         }

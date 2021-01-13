@@ -4,12 +4,28 @@
 .TEMPLATE_ROOT
 {
     height: 100%;
+    position: relative;
 
     @include themify
     {
         .TEMPLATE_TOP
         {
             transition: height 500ms;
+
+            @include responsive("XS")
+            {
+                height: 40px;
+            }
+
+            @include responsive("SM")
+            {
+                height: 50px;
+            }
+
+            @include responsive("MD")
+            {
+                height: 60px;
+            }
 
             @include responsive("LG")
             {
