@@ -67,7 +67,7 @@ class Main extends React.Component
     // ======================================================================================
 
     static contextType = store;
-    
+
     // == CONSTRUCTOR
     // ======================================================================================
 
@@ -301,10 +301,10 @@ class Main extends React.Component
 
                 menuButtonList.push ( 
 
-                    <div id={currentItem.id} className={`${currentItem.classes} ${ pageActive ? `MENU_BUTTON_${ currentItem.page.toUpperCase() }_SELECTED` : "" }`} style={ { backgroundColor : backgroundColor} }> 
+                    <div id={currentItem.id} key={`MENU_ITEMS_${count}`} className={`${currentItem.classes} ${ pageActive ? `MENU_BUTTON_${ currentItem.page.toUpperCase() }_SELECTED` : "" }`} style={ { backgroundColor : backgroundColor} }> 
 
                         <div className="MENU_BUTTON_CONTENT"> 
-                            <MenuButtonDesktop subItems={currentItem.subItems} page={ currentItem.page } active={ pageActive } activeSubPage={this.state.activeSubPage} icon={ currentItem.icon } colorPrimary={colorPrimary} colorSecondary={colorSecondary} text={currentItem.text} onMenuItemClickEvent={ this.props.onMenuItemClickEvent } onSubMenuItemClickEvent={ this.props.onSubMenuItemClickEvent } /> 
+                            <MenuButtonDesktop subItems={currentItem.subItems} page={ currentItem.page } active={ pageActive } activeSubPage={this.state.activeSubPage} icon={ currentItem.icon } colorPrimary={colorPrimary} colorSecondary={colorSecondary} text={currentItem.text} onNavigate={ this.props.onNavigate } />
                         </div> 
 
                     </div> 

@@ -10,8 +10,8 @@
    
 - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    File: MenuItemDesktop.js
-    Date: 2021/01/12
+    File: TemplateInternal.js
+    Date: 2021/01/13
 
 + - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - +
 
@@ -20,8 +20,15 @@
 // == IMPORTS
 // ==========================================================================================
 
-import './MenuItemDesktop.scss';
+import './TemplateInternal.scss';
+import Error404 from "../error/404/Error404";
+import Home from "../home/Home";
+import About from "../about/About";
+import Curriculum from "../cv/Curriculum";
+import Portfolio from "../portfolio/Portfolio";
+import Contact from "../contact/Contact";
 
+import { Switch, Route } from "react-router-dom";
 import React from 'react';
 
 // == CONSTANTS
@@ -32,15 +39,13 @@ import React from 'react';
 
 /**
  * 
- *  Website's bootstrap module.
- *  Basically it prepares the page to work with URL routes and serves as container 
- *  to subpages.
+ *  Defines the component TemplateInternal.js
  * 
  *  @author Henrique Fantini
  *  @since 0.0.1
  * 
  */
-class MenuItemDesktop extends React.Component 
+class TemplateInternal extends React.Component 
 {
     // == DECLARATIONS
     // ======================================================================================
@@ -65,7 +70,7 @@ class MenuItemDesktop extends React.Component
 
         this.state =
         {
-            active: props.active
+
         }
     }
 
@@ -81,7 +86,7 @@ class MenuItemDesktop extends React.Component
      */   
     static getDerivedStateFromProps(props)
     {
-        return { active: props.active };
+        return {};
     }
 
     /**
@@ -117,29 +122,63 @@ class MenuItemDesktop extends React.Component
      */
     render()
     {
-        let active = this.state.active;
-
         return ( 
-            
-            <div id="MENU_ITEM_DESKTOP_ROOT" className="MENU_ITEM_DESKTOP_ROOT" onClick={ (e) => { this.props.onNavigate(e, this.props.page, this.props.subPage) } }>
+        
+            <div id="TEMPLATE_INTERNAL">
 
-                <div id="MENU_ITEM_DESKTOP_CONTAINER" className={`MENU_ITEM_DESKTOP_CONTAINER ${active ? "MENU_ITEM_DESKTOP_CONTAINER_VISIBLE" : "MENU_ITEM_DESKTOP_CONTAINER_HIDDEN"}`}>
+                <div id="TEMPLATE_INTERNAL_CONTENT">
+                    
+                    <Switch>
 
-                    <div id="MENU_ITEM_DESKTOP_LEFT" className="MENU_ITEM_DESKTOP_LEFT">
+                        <Route exact path="/:lang/home">
+                        
+                            <Home/>
 
-                        <this.props.icon className="MENU_ITEM_DESKTOP_ICON" fill={"#E1DA23"}/>
+                        </Route>
 
-                    </div>
+                        <Route exact path="/:lang/about">
+                        
+                            <About/>
 
-                    <div id="MENU_ITEM_DESKTOP_RIGHT" className={`MENU_ITEM_DESKTOP_RIGHT`}>
+                        </Route>
 
-                        {this.props.text}
+                        <Route exact path="/:lang/about/:subPage">
+                        
+                            <About/>
 
-                    </div>
+                        </Route>
+
+                        <Route exact path="/:lang/cv">
+                        
+                            <Curriculum/>
+
+                        </Route>
+
+                        <Route exact path="/:lang/cv/:subPage">
+                        
+                            <About/>
+
+                        </Route>
+
+                        <Route exact path="/:lang/portfolio">
+                        
+                            <Portfolio/>
+
+                        </Route>
+
+                        <Route exact path="/:lang/contact">
+
+                            <Contact/>
+
+                        </Route>
+
+                        <Route component={Error404} />
+
+                    </Switch>
 
                 </div>
 
-            </div> 
+            </div>
         );
     }
 
@@ -153,4 +192,4 @@ class MenuItemDesktop extends React.Component
 // == EXPORTS
 // ==========================================================================================
 
-export default MenuItemDesktop;
+export default TemplateInternal;

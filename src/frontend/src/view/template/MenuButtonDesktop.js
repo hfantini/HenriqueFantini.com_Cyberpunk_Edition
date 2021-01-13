@@ -122,11 +122,11 @@ class MenuButtonDesktop extends React.Component
         for( let count = 0 ; count < this.props.subItems.length ; count++ )
         {
             let data = this.props.subItems[count];
-            let active = (this.state.activeSubPage == data.subPage)
+            let active = (this.state.activeSubPage === data.subPage)
 
             menuSubItems.push
             ( 
-                <MenuItemDesktop icon={data.icon} text={data.text} active={active} page={this.props.page} subPage={data.subPage} onSubMenuItemClickEvent={ this.props.onSubMenuItemClickEvent } />
+                <MenuItemDesktop key={`MENU_SUBITEMS_${count}`} icon={data.icon} text={data.text} active={active} page={this.props.page} subPage={data.subPage} onNavigate={ this.props.onNavigate } />
             );
         }
 
@@ -134,7 +134,7 @@ class MenuButtonDesktop extends React.Component
         
             <div id="MENU_BUTTON_ROOT" className="MENU_BUTTON_ROOT">
 
-                <div id="MENU_BUTTON_TOP" className="MENU_BUTTON_TOP" onClick={ (e) => { this.props.onMenuItemClickEvent(e, this.props.page) } }>
+                <div id="MENU_BUTTON_TOP" className="MENU_BUTTON_TOP" onClick={ (e) => { this.props.onNavigate(e, this.props.page) } }>
 
                     <div id="MENU_BUTTON_LEFT" className="MENU_BUTTON_LEFT"> 
                         <this.props.icon className="MENU_BUTTON_IMAGE" fill={this.props.colorSecondary}/>

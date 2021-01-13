@@ -27,6 +27,7 @@ import './Index.css';
 import Main from './view/Main';
 import reportWebVitals from './report/reportWebVitals';
 import { StateProvider } from "./GlobalStore";
+import { HashRouter as Router } from "react-router-dom";
 
 ReactDOM.render
 (
@@ -34,7 +35,9 @@ ReactDOM.render
 
         <StateProvider>
             
-            <Main/>
+            <Router>
+                <Main/>
+            </Router>
 
         </StateProvider>
 

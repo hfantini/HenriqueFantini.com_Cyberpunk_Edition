@@ -1,12 +1,7 @@
 @import "../Theme.scss";
 @import "../../mobile-mixins.scss";
 
-.TEMPLATE_ROOT_MOBILE
-{
-
-}
-
-.TEMPLATE_ROOT_DESKTOP
+.TEMPLATE_ROOT
 {
     height: 100%;
 
@@ -49,17 +44,6 @@
             @include responsive("XXL")
             {
                 height: calc( 100% - 90px - 200px );
-            }
-        }
-
-        .TEMPLATE_FOOTER
-        {
-            transition: height 500ms;
-            background-color: themed("color-dark");
-
-            @include responsive("LG")
-            {
-                height: 200px;
             }
         }
     }

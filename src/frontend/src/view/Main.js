@@ -22,7 +22,7 @@
 
 import React from 'react';
 import { store } from '../GlobalStore'
-import { HashRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import './Main.scss';
 import FSLoader from './loader/FSLoader'
 import Template from './template/Template'
@@ -78,10 +78,43 @@ class Main extends React.Component
             loading: true,
             isMobile: ViewportUtil.isMobile(),
         }
+
+        // == BINDINGS
+
+        this.onNavigate = this.onNavigate.bind(this);
     }
 
     // == METHODS
     // ======================================================================================
+
+    /**
+     * 
+     *  Obtain through currentPath the active page.
+     * 
+     *  @param currentPath String that defines the current URL Path. Obtained from React-Router.
+     * 
+     */
+    getActivePath( currentPath )
+    {
+        let retValue = { page: null, subPage: null };
+
+        if(currentPath && typeof currentPath == "string")
+        {
+            let splittedPath = currentPath.split("/");
+
+            if(splittedPath[2])
+            {
+                retValue.page = splittedPath[2];
+            }
+
+            if(splittedPath[3])
+            {
+                retValue.subPage = splittedPath[3];
+            }
+        }
+
+        return retValue;
+    }
 
     /**
      * 
@@ -132,31 +165,23 @@ class Main extends React.Component
      */
     render()
     {
-        console.log(this.state.isMobile);
+        let activePath = this.getActivePath(this.props.location.pathname);
 
         return(
 
             <div id="WS_ROOT" className="WS_ROOT">
+    
+                <Switch>
 
-                <StoreContext.Provider value={this.state}>
+                    <Route exact path="/">
+                        <Redirect to="/en/home" />
+                    </Route>
 
-                    <Router>
-                        
-                        <Switch>
+                </Switch>
 
-                            <Route exact path="/">
-                                <Redirect to="/en/home" />
-                            </Route>
-
-                        </Switch>
-
-                        <FSLoader isVisible={this.state.loading} />
-                        <Template/>
-
-                    </Router>
-
-                </StoreContext.Provider>
-
+                <FSLoader isVisible={this.state.loading} />
+                <Template activePage={activePath.page} activeSubPage={activePath.subPage} onNavigate={ (e, page, subPage) => { this.onNavigate(e, page, subPage) } }/>
+                
             </div>
         )
     }
@@ -184,6 +209,14 @@ class Main extends React.Component
         }
     }
 
+    onNavigate( e, page, subPage )
+    {
+        if(page)
+        {
+            this.props.history.push(`/en/${page}${ subPage ? "/" + subPage : "" }`);
+        }
+    }    
+
     // == GETTERS AND SETTERS
     // ======================================================================================
 }
@@ -191,4 +224,4 @@ class Main extends React.Component
 // == EXPORTS
 // ==========================================================================================
 
-export default Main;
+export default withRouter(Main);

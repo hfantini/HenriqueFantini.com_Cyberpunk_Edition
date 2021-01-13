@@ -49,11 +49,9 @@ const StateProvider = ( { children } ) =>
         {
             case "VIEWPORT_CHANGE_TO_MOBILE":
                 return {...state,  isMobile: true}
-                break;
 
             case "VIEWPORT_CHANGE_TO_DESKTOP":
                 return {...state,  isMobile: false}
-                break;
 
             default:
                 throw new Error();
