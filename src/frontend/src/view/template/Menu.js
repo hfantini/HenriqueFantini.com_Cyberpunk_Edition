@@ -291,73 +291,19 @@ class Main extends React.Component
      */
     render()
     {
-        if( this.context.state.isMobile )
+        let menuButtonList = [];
+
+        for( let count = 0 ; count < Object.values(this._menu).length ; count++ )
         {
-            return (
+            let currentItem = Object.values(this._menu)[count];
 
-                <div id="MENU_ROOT_MOBILE" className="MENU_ROOT_MOBILE">
+            let pageActive = (this.state.activePage === currentItem.page ? true : false)
+            let backgroundColor = (count % 2 === 0 ? "#FF00A0" : "#02D8F3");
+            let colorPrimary = (count % 2 === 0 ? "#FF00A0" : "#02D8F3");
+            let colorSecondary = (count % 2 === 0 ? "#02D8F3" : "#FF00A0");
 
-                    <div id="MENU_MOBILE_OVERLAY" className={`MENU_MOBILE_OVERLAY`}>
-
-                        <div id="MENU_MOBILE_OVERLAY_BACKGROUND" className="MENU_MOBILE_OVERLAY_BACKGROUND">
-
-                            <MenuBackgroundMobile id="MENU_MOBILE_OVERLAY_BACKGROUND_IMAGE" className="MENU_MOBILE_OVERLAY_BACKGROUND_IMAGE" fill={"#E1DA23"} />
-
-                        </div>
-
-                        <div id="MENU_MOBILE_OVERLAY_TOP" className="MENU_MOBILE_OVERLAY_TOP">
-                            
-                            <img src={MenuCloseIcon} className="MENU_MOBILE_OVERLAY_TOP_CLOSE" alt="CLOSE" onClick={ (e) => { this.onMenuCloseClick(e) } } />
-
-                        </div>
-
-                        <div id="MENU_MOBILE_OVERLAY_LOGO" className="MENU_MOBILE_OVERLAY_LOGO">
-                            
-                        </div>
-
-                        <div id="MENU_MOBILE_OVERLAY_CONTENT" className="MENU_MOBILE_OVERLAY_CONTENT">
-                            
-                        </div>
-
-                    </div>
-
-                    <div id="MENU_MOBILE_CONTENT" className="MENU_MOBILE_CONTENT">
-
-                        <div id="MENU_MOBILE_LEFT" className="MENU_MOBILE_LEFT">
-
-                            <div id="MENU_MOBILE_LOGO_CONTAINER" className="MENU_MOBILE_LOGO_CONTAINER">
-                            
-                                <div id="MENU_MOBILE_LOGO_BACKGROUND" className="MENU_MOBILE_LOGO_BACKGROUND"> </div>
-                                <img src={MenuLogoMobile} id="MENU_MOBILE_LOGO_IMAGE" className="MENU_MOBILE_LOGO_IMAGE" alt="MENU" />
-
-                            </div>
-
-                        </div>
-
-                        <div id="MENU_MOBILE_RIGHT" className="MENU_MOBILE_RIGHT">
-        
-                            <img src={MenuIcon} id="MENU_MOBILE_ICON_IMAGE" className="MENU_MOBILE_ICON_IMAGE" alt="MENU" onClick={ (e) => { this.onMenuClick(e) } } />
-
-                        </div>
-
-                    </div>
-
-                </div>
-            );
-        }
-        else
-        {
-            let menuButtonList = [];
-
-            for( let count = 0 ; count < Object.values(this._menu).length ; count++ )
+            if( !this.context.state.isMobile )
             {
-                let currentItem = Object.values(this._menu)[count];
-
-                let pageActive = (this.state.activePage === currentItem.page ? true : false)
-                let backgroundColor = (count % 2 === 0 ? "#FF00A0" : "#02D8F3");
-                let colorPrimary = (count % 2 === 0 ? "#FF00A0" : "#02D8F3");
-                let colorSecondary = (count % 2 === 0 ? "#02D8F3" : "#FF00A0");
-
                 menuButtonList.push ( 
 
                     <div id={currentItem.id} key={`MENU_ITEMS_${count}`} className={`${currentItem.classes} ${ pageActive ? `MENU_BUTTON_${ currentItem.page.toUpperCase() }_SELECTED` : "" }`} style={ { backgroundColor : backgroundColor} }> 
@@ -369,7 +315,74 @@ class Main extends React.Component
                     </div> 
                 );
             }
+            else
+            {
 
+            }
+        }
+
+        if( this.context.state.isMobile )
+        {
+            return (
+
+                <div id="MENU_ROOT_MOBILE_PORTRAIT" className="MENU_ROOT_MOBILE_PORTRAIT">
+
+                    <div id="MENU_MOBILE_PORTRAIT_OVERLAY" className={`MENU_MOBILE_PORTRAIT_OVERLAY`}>
+
+                        <div id="MENU_MOBILE_PORTRAIT_OVERLAY_BACKGROUND" className="MENU_MOBILE_PORTRAIT_OVERLAY_BACKGROUND">
+
+                        </div>
+
+                        <div id="MENU_MOBILE_PORTRAIT_OVERLAY_TOP" className="MENU_MOBILE_PORTRAIT_OVERLAY_TOP">
+                            
+                            <img src={MenuCloseIcon} className="MENU_MOBILE_PORTRAIT_OVERLAY_TOP_CLOSE" alt="CLOSE" onClick={ (e) => { this.onMenuCloseClick(e) } } />
+
+                        </div>
+
+                        <div id="MENU_MOBILE_PORTRAIT_OVERLAY_LOGO" className="MENU_MOBILE_PORTRAIT_OVERLAY_LOGO">
+                            
+                            <img src={MenuLogo} id="MENU_MOBILE_PORTRAIT_OVERLAY_LOGO_IMAGE" className="MENU_MOBILE_PORTRAIT_OVERLAY_LOGO_IMAGE" alt="MENU" />
+
+                        </div>
+
+                        <div id="MENU_MOBILE_PORTRAIT_OVERLAY_CONTENT" className="MENU_MOBILE_PORTRAIT_OVERLAY_CONTENT">
+                            
+                            <div id="MENU_MOBILE_PORTRAIT_OVERLAY_CONTENT_CONTAINER" className="MENU_MOBILE_PORTRAIT_OVERLAY_CONTENT_CONTAINER">
+
+                                {menuButtonList}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div id="MENU_MOBILE_PORTRAIT_CONTENT" className="MENU_MOBILE_PORTRAIT_CONTENT">
+
+                        <div id="MENU_MOBILE_PORTRAIT_LEFT" className="MENU_MOBILE_PORTRAIT_LEFT">
+
+                            <div id="MENU_MOBILE_PORTRAIT_LOGO_CONTAINER" className="MENU_MOBILE_PORTRAIT_LOGO_CONTAINER">
+                            
+                                <div id="MENU_MOBILE_PORTRAIT_LOGO_BACKGROUND" className="MENU_MOBILE_PORTRAIT_LOGO_BACKGROUND"> </div>
+                                <img src={MenuLogoMobile} id="MENU_MOBILE_PORTRAIT_LOGO_IMAGE" className="MENU_MOBILE_PORTRAIT_LOGO_IMAGE" alt="MENU" />
+
+                            </div>
+
+                        </div>
+
+                        <div id="MENU_MOBILE_PORTRAIT_RIGHT" className="MENU_MOBILE_PORTRAIT_RIGHT">
+        
+                            <img src={MenuIcon} id="MENU_MOBILE_PORTRAIT_ICON_IMAGE" className="MENU_MOBILE_PORTRAIT_ICON_IMAGE" alt="MENU" onClick={ (e) => { this.onMenuClick(e) } } />
+
+                        </div>
+
+                    </div>
+
+                </div>
+            );
+        }
+        else
+        {
             return(
             
                 <div id="MENU_ROOT_DESKTOP" className="MENU_ROOT_DESKTOP">
@@ -410,17 +423,17 @@ class Main extends React.Component
 
     onMenuClick(e)
     {
-        var element = document.getElementById("MENU_MOBILE_OVERLAY");
+        var element = document.getElementById("MENU_MOBILE_PORTRAIT_OVERLAY");
         element.style.top = "0%";
-        element.classList.add("MENU_MOBILE_OVERLAY_ANIM_OPEN");
-        element.classList.remove("MENU_MOBILE_OVERLAY_ANIM_CLOSE");
+        element.classList.add("MENU_MOBILE_PORTRAIT_OVERLAY_ANIM_OPEN");
+        element.classList.remove("MENU_MOBILE_PORTRAIT_OVERLAY_ANIM_CLOSE");
     }
 
     onMenuCloseClick(e)
     {
-        var element = document.getElementById("MENU_MOBILE_OVERLAY");
-        element.classList.remove("MENU_MOBILE_OVERLAY_ANIM_OPEN");
-        element.classList.add("MENU_MOBILE_OVERLAY_ANIM_CLOSE");
+        var element = document.getElementById("MENU_MOBILE_PORTRAIT_OVERLAY");
+        element.classList.remove("MENU_MOBILE_PORTRAIT_OVERLAY_ANIM_OPEN");
+        element.classList.add("MENU_MOBILE_PORTRAIT_OVERLAY_ANIM_CLOSE");
 
         setTimeout(() => 
         {

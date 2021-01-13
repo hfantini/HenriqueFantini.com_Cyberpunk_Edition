@@ -1,7 +1,7 @@
 @import "../Theme.scss";
 @import "../../mobile-mixins.scss";
 
-.MENU_ROOT_MOBILE
+.MENU_ROOT_MOBILE_PORTRAIT
 {
     @include themify
     {
@@ -9,38 +9,38 @@
         height: 100%;
         background-color: themed("color-dark");
   
-        @keyframes MENU_MOBILE_OVERLAY_ANIM_OPEN_KEYFRAMES
+        @keyframes MENU_MOBILE_PORTRAIT_OVERLAY_ANIM_OPEN_KEYFRAMES
         {
             0% { opacity: 0; }
             100% { opacity: 1; }
         }
 
-        .MENU_MOBILE_OVERLAY_ANIM_OPEN
+        .MENU_MOBILE_PORTRAIT_OVERLAY_ANIM_OPEN
         {
             opacity: 0;
             animation-duration: 300ms;
             animation-fill-mode: both;
             animation-timing-function: ease-out;
             animation-iteration-count: 1;
-            animation-name:MENU_MOBILE_OVERLAY_ANIM_OPEN_KEYFRAMES;
+            animation-name:MENU_MOBILE_PORTRAIT_OVERLAY_ANIM_OPEN_KEYFRAMES;
         }
 
-        @keyframes MENU_MOBILE_OVERLAY_ANIM_CLOSE_KEYFRAMES
+        @keyframes MENU_MOBILE_PORTRAIT_OVERLAY_ANIM_CLOSE_KEYFRAMES
         {
             0% { opacity: 1; }
             100% { opacity: 0; }
         }
 
-        .MENU_MOBILE_OVERLAY_ANIM_CLOSE
+        .MENU_MOBILE_PORTRAIT_OVERLAY_ANIM_CLOSE
         {
             animation-duration: 300ms;
             animation-fill-mode: both;
             animation-timing-function: ease-out;
             animation-iteration-count: 1;
-            animation-name:MENU_MOBILE_OVERLAY_ANIM_CLOSE_KEYFRAMES;
+            animation-name:MENU_MOBILE_PORTRAIT_OVERLAY_ANIM_CLOSE_KEYFRAMES;
         }
 
-        .MENU_MOBILE_OVERLAY
+        .MENU_MOBILE_PORTRAIT_OVERLAY
         {
             position: absolute;
             z-index: 1000;
@@ -49,7 +49,7 @@
             height: 100%;
             top: -100%;
 
-            .MENU_MOBILE_OVERLAY_BACKGROUND
+            .MENU_MOBILE_PORTRAIT_OVERLAY_BACKGROUND
             {
                 position: absolute;
                 top: 0px;
@@ -57,15 +57,14 @@
                 left: 0px;
                 right: 0px;
                 background-color: themed("color-dark");
+                background-repeat: no-repeat;
+                background-image: url("../../assets/image/svg/circuit.svg");
+                background-size: 600%;
+                background-position: 0 0;
                 z-index: -1000;
-
-                .MENU_MOBILE_OVERLAY_BACKGROUND_IMAGE
-                {
-                    height: 100%;
-                }
             }
 
-            .MENU_MOBILE_OVERLAY_TOP
+            .MENU_MOBILE_PORTRAIT_OVERLAY_TOP
             {
                 width: 100%;
                 display: flex;
@@ -92,7 +91,7 @@
                     height: 60px;
                 }
 
-                .MENU_MOBILE_OVERLAY_TOP_CLOSE
+                .MENU_MOBILE_PORTRAIT_OVERLAY_TOP_CLOSE
                 {
                     margin-right: 10px;
                     height: 60%;
@@ -100,19 +99,88 @@
                     cursor: pointer;
                 }
             }
+
+            .MENU_MOBILE_PORTRAIT_OVERLAY_LOGO
+            {
+                height: 200px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .MENU_MOBILE_PORTRAIT_OVERLAY_LOGO_IMAGE
+                {
+                    width: 60%;
+                    height: auto;
+                }
+            }
+
+            .MENU_MOBILE_PORTRAIT_OVERLAY_CONTENT
+            {
+                overflow-y: auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font: 35px;
+
+                @include responsive("XS")
+                {
+                    height: calc(100% - 200px - 40px);
+                }
+    
+                @include responsive("SM")
+                {
+                    height: calc(100% - 200px - 60px);
+                }
+    
+                @include responsive("MD")
+                {
+                    height: calc(100% - 200px - 60px);
+                }
+    
+                @include responsive("LG")
+                {
+                    height: calc(100% - 200px - 60px);
+                }
+
+                .MENU_MOBILE_PORTRAIT_OVERLAY_CONTENT_CONTAINER
+                {
+                    
+                }
+            }
         }
 
-        .MENU_MOBILE_CONTENT
+        .MENU_MOBILE_PORTRAIT_CONTENT
         {
             height: 100%;
             display: flex;
 
-            .MENU_MOBILE_LEFT
+            .MENU_MOBILE_PORTRAIT_LEFT
             {
                 width: 70%;
                 height: 100%;
 
-                .MENU_MOBILE_LOGO_CONTAINER
+                @include responsive("XS")
+                {
+                    padding-left: 25px;
+                }
+    
+                @include responsive("SM")
+                {
+                    padding-left: 25px;
+                }
+    
+                @include responsive("MD")
+                {
+                    padding-left: 35px;
+                }
+    
+                @include responsive("LG")
+                {
+                    padding-left: 35px;
+                }
+                
+
+                .MENU_MOBILE_PORTRAIT_LOGO_CONTAINER
                 {
                     position: relative;
                     width: 50%;
@@ -124,7 +192,7 @@
                     background-color: themed("color-primary");
                     border-bottom: 5px solid themed("color-dark");
 
-                    .MENU_MOBILE_LOGO_BACKGROUND
+                    .MENU_MOBILE_PORTRAIT_LOGO_BACKGROUND
                     {
                         position: absolute;
                         top: 0px;
@@ -140,16 +208,17 @@
                         opacity: 0.3;
                     }
 
-                    .MENU_MOBILE_LOGO_IMAGE
+                    .MENU_MOBILE_PORTRAIT_LOGO_IMAGE
                     {
-                        width: auto;
-                        height: 80%;
+                        width: 60%;
+                        height: auto;
+                        max-height: 95%;
                         -webkit-transform: skew(50deg);
                     }
                 }
             }
 
-            .MENU_MOBILE_RIGHT
+            .MENU_MOBILE_PORTRAIT_RIGHT
             {
                 height: 100%;
                 width: 30%;
@@ -157,7 +226,7 @@
                 justify-content: flex-end;
                 align-items: center;
 
-                .MENU_MOBILE_ICON_IMAGE
+                .MENU_MOBILE_PORTRAIT_ICON_IMAGE
                 {
                     margin-right: 10px;
                     height: 60%;
