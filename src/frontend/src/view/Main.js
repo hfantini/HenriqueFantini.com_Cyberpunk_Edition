@@ -21,8 +21,8 @@
 // ==========================================================================================
 
 import React from 'react';
+import { store } from '../GlobalStore'
 import { HashRouter as Router, Switch, Route, Redirect } from "react-router-dom";
-
 import './Main.scss';
 import FSLoader from './loader/FSLoader'
 import Template from './template/Template'
@@ -35,6 +35,8 @@ const DEBUG_TIME_TO_LOAD = 1000;
 
 // == CLASS
 // ==========================================================================================
+
+export const StoreContext = React.createContext()
 
 /**
  * 
@@ -50,6 +52,8 @@ class Main extends React.Component
 {
     // == DECLARATIONS
     // ======================================================================================
+
+    static contextType = store;
 
     // == CONSTRUCTOR
     // ======================================================================================
@@ -134,20 +138,24 @@ class Main extends React.Component
 
             <div id="WS_ROOT" className="WS_ROOT">
 
-                <Router>
-                    
-                    <Switch>
+                <StoreContext.Provider value={this.state}>
 
-                        <Route exact path="/">
-                            <Redirect to="/en/home" />
-                        </Route>
+                    <Router>
+                        
+                        <Switch>
 
-                    </Switch>
+                            <Route exact path="/">
+                                <Redirect to="/en/home" />
+                            </Route>
 
-                    <FSLoader isVisible={this.state.loading} />
-                    <Template/>
+                        </Switch>
 
-                </Router>
+                        <FSLoader isVisible={this.state.loading} />
+                        <Template/>
+
+                    </Router>
+
+                </StoreContext.Provider>
 
             </div>
         )
@@ -166,7 +174,14 @@ class Main extends React.Component
      */
     onWindowResize(evt)
     {
-        this.setState( { isMobile: ViewportUtil.isMobile() } )
+        if( ViewportUtil.isMobile() )
+        {
+            this.context.dispatch( { type: "VIEWPORT_CHANGE_TO_MOBILE" } );
+        }
+        else
+        {
+            this.context.dispatch( { type: "VIEWPORT_CHANGE_TO_DESKTOP" } );
+        }
     }
 
     // == GETTERS AND SETTERS

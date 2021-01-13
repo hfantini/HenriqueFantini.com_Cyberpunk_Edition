@@ -21,6 +21,7 @@
 // ==========================================================================================
 
 import './Template.scss';
+import {StoreContext} from "../Main";
 import Menu from "./Menu";
 import Error404 from "../error/404/Error404";
 import Home from "../home/Home";
@@ -30,7 +31,8 @@ import Portfolio from "../portfolio/Portfolio";
 import Contact from "../contact/Contact";
 import { HashRouter as Router, Switch, Route, withRouter } from "react-router-dom";
 
-import React from 'react';
+import { store } from '../../GlobalStore';
+import React, { useContext } from 'react';
 
 // == CONSTANTS
 // ==========================================================================================
@@ -52,6 +54,8 @@ class Template extends React.Component
     // == DECLARATIONS
     // ======================================================================================
 
+    static contextType = store;
+
     // == CONSTRUCTOR
     // ======================================================================================
 
@@ -68,12 +72,16 @@ class Template extends React.Component
 
 		// == VAR & CONST
 
+        // == GLOBAL STATE
+
         // == STATE
 
         this.state =
         {
 
         }
+
+        console.log(this.context);
     }
 
     // == METHODS
@@ -155,78 +163,85 @@ class Template extends React.Component
     {
         let activePath = this.getActivePath(this.props.location.pathname);
 
-        return( 
+        if(this.context.state.isMobile)
+        {
+            return(<div>PURE MOBILE HU3!</div>);
+        }
+        else
+        {
+            return( 
 
-            <div className="TEMPLATE_ROOT">
+                <div className="TEMPLATE_ROOT_DESKTOP">
 
-                <div className="TEMPLATE_TOP">
+                    <div className="TEMPLATE_TOP">
 
-                    <Menu activePage={activePath.page} activeSubPage={activePath.subPage} onMenuItemClickEvent={ (e, page) => { this.onMenuItemClick(e, page) } } onSubMenuItemClickEvent={ (e, page, subPage) => { this.onSubMenuItemClick(e, page, subPage) } }/>
+                        <Menu activePage={activePath.page} activeSubPage={activePath.subPage} onMenuItemClickEvent={ (e, page) => { this.onMenuItemClick(e, page) } } onSubMenuItemClickEvent={ (e, page, subPage) => { this.onSubMenuItemClick(e, page, subPage) } }/>
 
-                </div>
+                    </div>
 
-                <div className="TEMPLATE_CONTENT">
+                    <div className="TEMPLATE_CONTENT">
 
-                <Router>
-                    
-                    <Switch>
-
-                        <Route exact path="/:lang/home">
-                           
-                            <Home/>
-
-                        </Route>
-
-                        <Route exact path="/:lang/about">
+                    <Router>
                         
-                            <About/>
+                        <Switch>
 
-                        </Route>
+                            <Route exact path="/:lang/home">
+                            
+                                <Home/>
 
-                        <Route exact path="/:lang/about/:subPage">
-                        
-                            <About/>
+                            </Route>
 
-                        </Route>
+                            <Route exact path="/:lang/about">
+                            
+                                <About/>
 
-                        <Route exact path="/:lang/cv">
-                        
-                            <Curriculum/>
+                            </Route>
 
-                        </Route>
+                            <Route exact path="/:lang/about/:subPage">
+                            
+                                <About/>
 
-                        <Route exact path="/:lang/cv/:subPage">
-                        
-                            <About/>
+                            </Route>
 
-                        </Route>
+                            <Route exact path="/:lang/cv">
+                            
+                                <Curriculum/>
 
-                        <Route exact path="/:lang/portfolio">
-                        
-                            <Portfolio/>
+                            </Route>
 
-                        </Route>
+                            <Route exact path="/:lang/cv/:subPage">
+                            
+                                <About/>
 
-                        <Route exact path="/:lang/contact">
+                            </Route>
 
-                            <Contact/>
+                            <Route exact path="/:lang/portfolio">
+                            
+                                <Portfolio/>
 
-                        </Route>
+                            </Route>
 
-                        <Route component={Error404} />
+                            <Route exact path="/:lang/contact">
 
-                    </Switch>
+                                <Contact/>
 
-                </Router>
+                            </Route>
 
-                </div>
+                            <Route component={Error404} />
 
-                <div className="TEMPLATE_FOOTER">
+                        </Switch>
 
-                </div>
+                    </Router>
 
-            </div> 
-        )
+                    </div>
+
+                    <div className="TEMPLATE_FOOTER">
+
+                    </div>
+
+                </div> 
+            )
+        }
     }
 
     // == EVENTS

@@ -26,12 +26,17 @@ import ReactDOM from 'react-dom';
 import './Index.css';
 import Main from './view/Main';
 import reportWebVitals from './report/reportWebVitals';
+import { StateProvider } from "./GlobalStore";
 
 ReactDOM.render
 (
   <React.StrictMode>
-      
-    <Main/>
+
+        <StateProvider>
+            
+            <Main/>
+
+        </StateProvider>
 
   </React.StrictMode>,
 

@@ -42,7 +42,7 @@ import {ReactComponent as IconCVCertificate} from "../../assets/image/svg/medal.
 import {ReactComponent as IconCVSkill} from "../../assets/image/svg/skill.svg";
 import {ReactComponent as IconPortfolio} from "../../assets/image/svg/briefcase.svg";
 import {ReactComponent as IconContact} from "../../assets/image/svg/mail.svg";
-import {isMobile} from 'react-device-detect';
+import { store } from '../../GlobalStore';
 import React from 'react';
 
 // == CONSTANTS
@@ -66,6 +66,8 @@ class Main extends React.Component
     // == DECLARATIONS
     // ======================================================================================
 
+    static contextType = store;
+    
     // == CONSTRUCTOR
     // ======================================================================================
 
@@ -280,7 +282,11 @@ class Main extends React.Component
      */
     render()
     {
-        if(!isMobile)
+        if( this.context.state.isMobile )
+        {
+            return(<div>MENU MOBILE</div>);
+        }
+        else
         {
             let menuButtonList = [];
 
@@ -334,16 +340,6 @@ class Main extends React.Component
                         </div>
 
                     </div>
-
-                </div>
-            )
-        }
-        else
-        {
-
-            return(
-            
-                <div id="MENU_ROOT" className="MENU_ROOT">
 
                 </div>
             )
